@@ -13,7 +13,7 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/mallory.row/verification/global/verify_graphcastgfs/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS/EVS/
 
 export SENDCOM=YES
 export SENDMAIL=NO
@@ -34,7 +34,7 @@ export machine=WCOSS2
 export USE_CFP=YES
 export nproc=128
 
-export MAILTO='mallory.row@noaa.gov'
+export MAILTO='qi.shi@noaa.gov'
 
 export envir=prod
 export NET=evs
@@ -47,7 +47,8 @@ export MODELNAME=graphcastgfs13
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/mallory.row/verification/global/verify_graphcastgfs/$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/mallory.row/verification/global/verify_graphcastgfs/$NET/$evs_ver_2d/$STEP/$COMPONENT
+#export COMOUT=/lfs/h2/emc/vpppg/noscrub/mallory.row/verification/global/verify_graphcastgfs/$NET/$evs_ver_2d/$STEP/$COMPONENT
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS/$NET/$evs_ver_2d/$STEP/$COMPONENT
 
 export config=$HOMEevs/parm/evs_config/global_det/config.evs.${STEP}.${COMPONENT}.${RUN}.${VERIF_CASE}.graphcastgfs
 
