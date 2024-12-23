@@ -31,7 +31,7 @@ export RUN_GRID2OBS_PLOTS="NO"
 #model_file_format_list:     file format of model files
 export model_list="gfs graphcastgfs13 graphcastgfs13_test"
 export model_evs_data_dir_list="/lfs/h1/ops/prod/com/evs/v1.0/stats/$COMPONENT/gfs $COMIN/stats/$COMPONENT/graphcastgfs13 $COMIN/stats/$COMPONENT/graphcastgfs13_test"
-export model_file_format_list="$COMROOT/gfs/${gfs_ver}/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/atmos/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H} /lfs/h2/emc/vpppg/noscrub/mallory.row/verification/global/verify_graphcastgfs/graphcastgfs13/graphcastgfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/graphcastgfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H}  /lfs/h2/emc/vpppg/noscrub/mallory.row/verification/global/verify_graphcastgfs/graphcastgfs13_test/graphcastgfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/graphcastgfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H}"
+export model_file_format_list="$COMROOT/gfs/${gfs_ver}/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/atmos/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H} /lfs/h2/emc/vpppg/noscrub/mallory.row/verification/global/verify_graphcastgfs/graphcastgfs13/graphcastgfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/graphcastgfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H} /lfs/h2/emc/vpppg/noscrub/mallory.row/verification/global/verify_graphcastgfs/graphcastgfs13_test/graphcastgfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/graphcastgfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H}"
 ## OUTPUT DATA SETTINGS
 #OUTPUTROOT: base output directory
 export OUTPUTROOT="$DATAROOT"
