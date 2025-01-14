@@ -176,15 +176,13 @@ generate_stats_jobs_dict = {
                               'var1_fcst_levels': ("'P1000, P925, P850, "
                                                    +"P700, P500, P400, "
                                                    +"P300, P250, P200, "
-                                                   +"P150, P100, P50, "
-                                                   +"P20, P10, P5, P1'"),
+                                                   +"P150, P100, P50'"),
                               'var1_fcst_options': '',
                               'var1_obs_name': 'HGT',
                               'var1_obs_levels': ("'P1000, P925, P850, "
                                                   +"P700, P500, P400, "
                                                   +"P300, P250, P200, "
-                                                  +"P150, P100, P50, "
-                                                  +"P20, P10, P5, P1'"),
+                                                  +"P150, P100, P50'"),
                               'var1_obs_options': '',
                               'met_config_overrides': ''},
                       'commands': [gda_util.metplus_command(
@@ -198,8 +196,7 @@ generate_stats_jobs_dict = {
                             'var1_fcst_levels': ("'P1000, P925, P850, "
                                                  +"P700, P500, P400, "
                                                  +"P300, P250, P200, "
-                                                 +"P150, P100, P50, "
-                                                 +"P20, P10, P5, P1'"),
+                                                 +"P150, P100, P50'"),
                             'var1_fcst_options': ("'set_attr_units = "
                                                   +'"g/kg"; convert(x)=x*1000'
                                                   +"'"),
@@ -207,8 +204,7 @@ generate_stats_jobs_dict = {
                             'var1_obs_levels': ("'P1000, P925, P850, "
                                                 +"P700, P500, P400, "
                                                 +"P300, P250, P200, "
-                                                +"P150, P100, P50, "
-                                                +"P20, P10, P5, P1'"),
+                                                +"P150, P100, P50'"),
                             'var1_obs_options': ("'set_attr_units = "
                                                  +'"g/kg"; convert(x)=x*1000'
                                                  +"'"),
@@ -224,15 +220,13 @@ generate_stats_jobs_dict = {
                          'var1_fcst_levels': ("'P1000, P925, P850, "
                                               +"P700, P500, P400, "
                                               +"P300, P250, P200, "
-                                              +"P150, P100, P50, "
-                                              +"P20, P10, P5, P1'"),
+                                              +"P150, P100, P50'"),
                          'var1_fcst_options': '',
                          'var1_obs_name': 'TMP',
                          'var1_obs_levels': ("'P1000, P925, P850, "
                                              +"P700, P500, P400, "
                                              +"P300, P250, P200, "
-                                             +"P150, P100, P50, "
-                                             +"P20, P10, P5, P1'"),
+                                             +"P150, P100, P50'"),
                          'var1_obs_options': '',
                          'met_config_overrides': ''},
                  'commands': [gda_util.metplus_command(
@@ -246,15 +240,13 @@ generate_stats_jobs_dict = {
                           'var1_fcst_levels': ("'P1000, P925, P850, "
                                                +"P700, P500, P400, "
                                                +"P300, P250, P200, "
-                                               +"P150, P100, P50, "
-                                               +"P20, P10, P5, P1'"),
+                                               +"P150, P100, P50'"),
                           'var1_fcst_options': '',
                           'var1_obs_name': 'UGRD',
                           'var1_obs_levels': ("'P1000, P925, P850, "
                                               +"P700, P500, P400, "
                                               +"P300, P250, P200, "
-                                              +"P150, P100, P50, "
-                                              +"P20, P10, P5, P1'"),
+                                              +"P150, P100, P50'"),
                           'var1_obs_options': '',
                           'met_config_overrides': ''},
                   'commands': [gda_util.metplus_command(
@@ -268,15 +260,13 @@ generate_stats_jobs_dict = {
                           'var1_fcst_levels': ("'P1000, P925, P850, "
                                                +"P700, P500, P400, "
                                                +"P300, P250, P200, "
-                                               +"P150, P100, P50, "
-                                               +"P20, P10, P5, P1'"),
+                                               +"P150, P100, P50'"),
                           'var1_fcst_options': '',
                           'var1_obs_name': 'VGRD',
                           'var1_obs_levels': ("'P1000, P925, P850, "
                                               +"P700, P500, P400, "
                                               +"P300, P250, P200, "
-                                              +"P150, P100, P50, "
-                                              +"P20, P10, P5, P1'"),
+                                              +"P150, P100, P50'"),
                           'var1_obs_options': '',
                           'met_config_overrides': ''},
                   'commands': [gda_util.metplus_command(
@@ -290,29 +280,25 @@ generate_stats_jobs_dict = {
                                'var1_fcst_levels': ("'P1000, P925, P850, "
                                                     +"P700, P500, P400, "
                                                     +"P300, P250, P200, "
-                                                    +"P150, P100, P50, "
-                                                    +"P20, P10, P5, P1'"),
+                                                    +"P150, P100, P50'"),
                                'var1_fcst_options': '',
                                'var1_obs_name': 'UGRD',
                                'var1_obs_levels': ("'P1000, P925, P850, "
                                                    +"P700, P500, P400, "
                                                    +"P300, P250, P200, "
-                                                   +"P150, P100, P50, "
-                                                   +"P20, P10, P5, P1'"),
+                                                   +"P150, P100, P50'"),
                                'var1_obs_options': '',
                                'var2_fcst_name': 'VGRD',
                                'var2_fcst_levels': ("'P1000, P925, P850, "
                                                     +"P700, P500, P400, "
                                                     +"P300, P250, P200, "
-                                                    +"P150, P100, P50, "
-                                                    +"P20, P10, P5, P1'"),
+                                                    +"P150, P100, P50'"),
                                'var2_fcst_options': '',
                                'var2_obs_name': 'VGRD',
                                'var2_obs_levels': ("'P1000, P925, P850, "
                                                    +"P700, P500, P400, "
                                                    +"P300, P250, P200, "
-                                                   +"P150, P100, P50, "
-                                                   +"P20, P10, P5, P1'"),
+                                                   +"P150, P100, P50'"),
                                'var2_obs_options': '',
                                'met_config_overrides': ''},
                        'commands': [gda_util.metplus_command(
