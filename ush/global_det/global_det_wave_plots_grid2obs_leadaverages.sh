@@ -34,8 +34,26 @@ MET_VERSION_major_minor=$(echo $MET_VERSION | sed "s/\([^.]*\.[^.]*\)\..*/\1/g")
 # write the commands
 for period in ${periods} ; do
   for valid_hour in ${valid_hours} ; do
+<<<<<<< HEAD
     for wvar in ${wave_vars} ; do
       image_var=$(echo ${wvar} | tr '[A-Z]' '[a-z]')
+=======
+    for obsname in $obsnames; do
+      if [ $obsname = "GDAS" ]; then
+          OBTYPE="SFCSHP"
+          regions="GLOBAL"
+          wave_vars='WIND HTSGW PERPW'
+      elif [ $obsname = "NDBC" ]; then
+          OBTYPE="NDBC_STANDARD"
+          regions="GLOBAL SEUS_CARB GOA NEUS_CAN WCOAST_AK HAWAII"
+          wave_vars='WIND HTSGW PERPW'
+      elif [ $obsname = "JASON3" ]; then
+          OBTYPE="JASON3"
+          regions="GLOBAL"
+          wave_vars='WIND HTSGW'
+      fi
+      obtypel=`echo $OBTYPE | tr '[A-Z]' '[a-z]'`
+>>>>>>> fbfa5153 (Update naming conventions per Executive Order 14172 (#666))
       for stats in ${stats_list}; do
         for obsname in $obsnames; do
             if [ $obsname = "GDAS" ]; then
