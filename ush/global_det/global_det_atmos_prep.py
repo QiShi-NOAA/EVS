@@ -61,9 +61,6 @@ gda_util.make_dir(output_INITDATE)
 # NCEP's Climatology-Calibrated Precipitation Analysis to 24 hour accumulation- ccpa_accum24hr
 global_det_obs_dict = {
     'osi_saf': {'input_file_format': os.path.join(DCOMINosi_saf,
-                                                  '{init_shift?fmt=%Y%m%d'
-                                                  +'?shift=-12}',
-                                                  'seaice', 'osisaf',
                                                   'ice_conc_{hem?fmt=str}_'
                                                   +'polstere-100_multi_'
                                                   +'{init_shift?fmt=%Y%m%d%H'
@@ -86,10 +83,6 @@ global_det_obs_dict = {
                 'inithours': ['00']},
     'ghrsst_ospo': {'input_file_format': os.path.join(DCOMINghrsst_ospo,
                                                       '{init_shift?fmt=%Y%m%d'
-                                                      +'?shift=-24}',
-                                                      'validation_data', 'marine',
-                                                      'ghrsst',
-                                                      '{init_shift?fmt=%Y%m%d'
                                                       +'?shift=-24}_OSPO_L4_'
                                                       +'GHRSST.nc'),
                     'tmp_file_format': os.path.join(DATA, RUN+'.'+INITDATE,
@@ -99,12 +92,10 @@ global_det_obs_dict = {
                                                     +'?shift=-24}to'
                                                     +'{init?fmt=%Y%m%d%H}.nc'),
                     'inithours': ['00']},
-    'ccpa_accum24hr': {'input_file_format': os.path.join(COMINccpa,'ccpa.'
-                                                         +'{init?fmt=%Y%m%d}',
-                                                         '{init?fmt=%H}',
-                                                         'ccpa.t{init?fmt=%H}z'
-                                                         +'.06h.hrap.conus.'
-                                                         +'gb2'),
+    'ccpa_accum24hr': {'input_file_format': os.path.join(COMINccpa,
+                                                         'ccpa.hrap.'
+                                                         +'{init?fmt=%Y%m%d%H}'
+                                                         +'.6h'),
                        'tmp_file_format': os.path.join(DATA, f"{RUN}.{INITDATE}",
                                                        'ccpa_accum24hr',
                                                        'pcp_combine_'
@@ -113,12 +104,9 @@ global_det_obs_dict = {
                                                        +'{init?fmt=%Y%m%d%H}'
                                                        +'.nc'),
                        'inithours': ['12']},
-    'prepbufr_gdas': {'input_file_format': os.path.join(COMINobsproc, 'gdas.'
-                                                        +'{init?fmt=%Y%m%d}',
-                                                        '{init?fmt=%H}',
-                                                        'atmos', 'gdas.t'
-                                                        +'{init?fmt=%H}'
-                                                        +'z.prepbufr'),
+    'prepbufr_gdas': {'input_file_format': os.path.join(COMINobsproc, 
+                                                        'gdas','prepbufr.gdas.'
+                                                        +'{init?fmt=%Y%m%d%H}'),
                       'tmp_file_format': os.path.join(DATA, f"{RUN}.{INITDATE}",
                                                       'prepbufr_gdas', 'pb2nc_'
                                                       +'gdas_{vtype?fmt=str}_'
@@ -126,7 +114,8 @@ global_det_obs_dict = {
                                                       +'{init?fmt=%Y%m%d%H}'
                                                       +'.nc'),
                       'inithours': ['00', '06', '12', '18']},
-    'prepbufr_nam': {'input_file_format': os.path.join(COMINobsproc, 'nam.'
+    'prepbufr_nam': {'input_file_format': os.path.join(COMINobsproc, 
+                                                       'nam','nam.'
                                                        +'{init?fmt=%Y%m%d}',
                                                        'nam.t'
                                                        +'{init?fmt=%H}'
@@ -330,8 +319,8 @@ global_det_model_dict = {
                                                      'U1D{init?fmt=%m%d%H}00'
                                                      +'{valid?fmt=%m%d%H}001'),
               'input_anl_file_format': os.path.join(DCOMINecmwf,
-                                                    'U1D{init?fmt=%m%d%H}00'
-                                                    +'{init?fmt=%m%d%H}011'),
+                                                    'pgbanl.ecm.'
+                                                    +'{init?fmt=%Y%m%d%H}'),
               'input_precip_file_format': os.path.join(DCOMINecmwf_precip,
                                                        'UWD{init?fmt=%Y%m%d%H%M}'
                                                        +'{valid?fmt=%m%d%H%M}1'),

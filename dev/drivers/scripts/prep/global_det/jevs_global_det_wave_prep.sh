@@ -12,10 +12,10 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS
 
 export SENDCOM=YES
-export SENDMAIL=YES
+export SENDMAIL=NO
 export KEEPDATA=YES
 export job=${PBS_JOBNAME:-jevs_global_det_wave_prep}
 export jobid=$job.${PBS_JOBID:-$$}
@@ -29,7 +29,7 @@ source $HOMEevs/dev/modulefiles/global_det/global_det_prep.sh
 
 evs_ver_2d=$(echo $evs_ver | cut -d'.' -f1-2)
 
-export MAILTO='alicia.bentley@noaa.gov,qi.shi@noaa.gov'
+export MAILTO='qi.shi@noaa.gov'
 
 export envir=prod
 export NET=evs
@@ -40,7 +40,7 @@ export RUN=wave
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
 
 export MODELNAME="gfs"
 export OBSNAME="prepbufr_gdas ndbc jason3"
