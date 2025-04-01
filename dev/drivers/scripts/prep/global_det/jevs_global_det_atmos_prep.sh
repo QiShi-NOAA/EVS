@@ -15,13 +15,8 @@ export model=evs
 export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS
 
 export SENDCOM=YES
-<<<<<<< HEAD
 export SENDMAIL=NO
-export KEEPDATA=YES
-=======
-export SENDMAIL=YES
 export KEEPDATA=NO
->>>>>>> develop
 export job=${PBS_JOBNAME:-jevs_global_det_atmos_prep}
 export jobid=$job.${PBS_JOBID:-$$}
 export SITE=$(cat /etc/cluster_name)
