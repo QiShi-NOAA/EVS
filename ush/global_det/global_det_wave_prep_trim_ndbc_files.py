@@ -46,10 +46,9 @@ for line in open(os.path.join(FIXevs, 'ndbc_stations', 'ndbc_stations.xml'),
 
 # Trim down files for single date
 # and only include those with location data
-for ndbc_input_file in glob.glob(os.path.join(DCOMINndbc,
+for ndbc_input_file in glob.glob(os.path.join(DCOMINndbc,'ndbc_buoy',
                                              f"{INITDATEp1_dt:%Y%m%d}",
-                                             'validation_data', 'marine',
-                                             'buoy', '*.txt')):
+                                             '*.txt')):
     buoy_id = ndbc_input_file.rpartition('/')[2].partition('.')[0]
     if buoy_id not in buoy_with_loc_list:
         continue
