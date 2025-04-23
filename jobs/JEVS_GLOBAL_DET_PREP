@@ -44,6 +44,7 @@ export cycle=${cycle:-t${vhr}z}
 setpdy.sh
 . ./PDY
 export INITDATE=${INITDATE:-$PDYm1}
+export INITDATE=20250308
 
 ####################################
 # Set data directives
