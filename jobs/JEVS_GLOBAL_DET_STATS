@@ -49,7 +49,6 @@ export cycle=${cycle:-t${vhr}z}
 setpdy.sh
 . ./PDY
 #export VDATE=${VDATE:-$PDYm1}
-#export VDATE=20241124
 
 ####################################
 # Set data directives
@@ -63,7 +62,6 @@ export SENDMAIL=${SENDMAIL:-NO}
 # Define COMIN/COMOUT variables
 ####################################
 export COMIN=${COMIN:-$(compath.py ${envir}/com/$NET/$evs_ver)}
-#export COMINgfs=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/eval/model_data/gfs/prod
 export COMINgfs=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_stand_alone/retrotestgfs05/
 export COMINccpa=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/ccpa_accum6hr
 export COMINobsproc=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/prepbufr

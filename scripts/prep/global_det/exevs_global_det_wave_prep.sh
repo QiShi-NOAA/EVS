@@ -20,7 +20,6 @@ for MODEL in $MODELNAME; do
     mkdir -p ${DATA}/${MODEL}
     # Copy the GFS 0.25 degree wave forecast files
     if [ $MODEL == "gfs" ]; then
-        #inithours='00 06 12 18'
 	inithours='00 12'
         lead_hours='000 006 012 018 024 030 036 042 048 054 060 066 072 078
             084 090 096 102 108 114 120 126 132 138 144 150 156 162
@@ -29,7 +28,6 @@ for MODEL in $MODELNAME; do
             336 342 348 354 360 366 372 378 384'
         for inithour in ${inithours} ; do
             for hr in ${lead_hours} ; do
-		#input_filename="${COMINgfs}/${inithour}/wave/gfswave.t${inithour}z.global.0p25.f${hr}.grib2"
 		input_filename="${COMINgfs}/${inithour}/products/wave/gridded/global.0p25/gfs.wave.t${inithour}z.global.0p25.f${hr}.grib2"
                 tmp_filename="${DATA}/${MODEL}/gfswave.${INITDATE}.t${inithour}z.global.0p25.f${hr}.grib2"
                 output_filename="${COMOUT}.${INITDATE}/${MODEL}/gfswave.${INITDATE}.t${inithour}z.global.0p25.f${hr}.grib2"
@@ -109,7 +107,6 @@ for OBS in $OBSNAME; do
     # Trim down the NDBC buoy files and run ASCII2NC
     elif [ $OBS == "ndbc" ]; then
         export INITDATEp1=$($NDATE +24 ${INITDATE}${vhr} | cut -c 1-8)
-        #input_ndbc_dir=${DCOMINndbc}/${INITDATEp1}/validation_data/marine/buoy
 	input_ndbc_dir=${DCOMINndbc}/ndbc_buoy/${INITDATEp1}
         tmp_ndbc_file=${DATA}/${OBS}/${OBS}.${INITDATE}.nc
         output_ndbc_file=${COMOUT}.${INITDATE}/${OBS}/${OBS}.${INITDATE}.nc
@@ -148,7 +145,6 @@ for OBS in $OBSNAME; do
         fi
     # Run PB2NC on JASON-3 bufr files
     elif [ $OBS == "jason3" ]; then
-        #input_jason3_file=${DCOMINjason3}/${INITDATE}/b031/xx124
 	input_jason3_file=${DCOMINjason3}/jason3/jason3_b031_xx124_${INITDATE}
         tmp_jason3_file=${DATA}/${OBS}/${OBS}.${INITDATE}.nc
         output_jason3_file=${COMOUT}.${INITDATE}/${OBS}/${OBS}.${INITDATE}.nc

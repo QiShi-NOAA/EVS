@@ -44,7 +44,6 @@ export cycle=${cycle:-t${vhr}z}
 setpdy.sh
 . ./PDY
 #export INITDATE=${INITDATE:-$PDYm1}
-#export INITDATE=20241109
 
 ####################################
 # Set data directives
@@ -60,14 +59,12 @@ export SENDMAIL=${SENDMAIL:-NO}
 export COMIN=${COMIN:-$(compath.py ${envir}/com/$NET/$evs_ver)}
 export COMINcfs=${COMINcfs:-$(compath.py $envir/cfs/$cfs_ver/cfs.$INITDATE)}
 export COMINcmc=${COMINcmc:-$(compath.py $envir/cmc/$cmc_ver/cmc.$INITDATE)}
-#export COMINgfs=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/eval/model_data/gfs/prod/gfs.$INITDATE
 export COMINgfs=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_stand_alone/retrotestgfs05/gfs.$INITDATE
 export COMINccpa=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/ccpa_accum6hr
 export COMINobsproc=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/prepbufr
 export DCOMINcmc_precip=${DCOMINcmc_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
 export DCOMINcmc_regional_precip=${DCOMINcmc_regional_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
 export DCOMINdwd_precip=${DCOMINdwd_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
-#export DCOMINecmwf=${DCOMINecmwf:-$DCOMROOT/${INITDATE}/wgrbbul/ecmwf}
 export DCOMINecmwf=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/model_data/ecm
 export DCOMINecmwf_precip=${DCOMINecmwf_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
 export DCOMINfnmoc=${DCOMINfnmoc:-$DCOMROOT/navgem}
@@ -77,13 +74,9 @@ export DCOMINjma_precip=${DCOMINjma_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
 export DCOMINmetfra_precip=${DCOMINmetfra_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
 export DCOMINukmet=${DCOMINukmet:-$DCOMROOT/${INITDATE}/wgrbbul/ukmet_hires}
 export DCOMINukmet_precip=${DCOMINukmet_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
-#export DCOMINosi_saf=${DCOMINosi_saf:-$DCOMROOT}
 export DCOMINosi_saf=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/osi_saf
-#export DCOMINghrsst_ospo=${DCOMINghrsst_ospo:-$DCOMROOT}
 export DCOMINghrsst_ospo=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/ghrsst_ospo
-#export DCOMINndbc=${DCOMINndbc:-$DCOMROOT}
 export DCOMINndbc=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data
-#export DCOMINjason3=${DCOMINjason3:-$DCOMROOT}
 export DCOMINjason3=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data
 export COMOUT=${COMOUT:-$(compath.py -o $NET/$evs_ver/$STEP/$COMPONENT/$RUN)}
 mkdir -p $COMOUT.${INITDATE}
