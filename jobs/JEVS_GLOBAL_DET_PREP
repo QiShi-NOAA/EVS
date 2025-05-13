@@ -43,8 +43,8 @@ export vhr=${vhr:-00}
 export cycle=${cycle:-t${vhr}z}
 setpdy.sh
 . ./PDY
-export INITDATE=${INITDATE:-$PDYm1}
-export INITDATE=20250308
+#export INITDATE=${INITDATE:-$PDYm1}
+#export INITDATE=20241109
 
 ####################################
 # Set data directives
@@ -60,7 +60,8 @@ export SENDMAIL=${SENDMAIL:-NO}
 export COMIN=${COMIN:-$(compath.py ${envir}/com/$NET/$evs_ver)}
 export COMINcfs=${COMINcfs:-$(compath.py $envir/cfs/$cfs_ver/cfs.$INITDATE)}
 export COMINcmc=${COMINcmc:-$(compath.py $envir/cmc/$cmc_ver/cmc.$INITDATE)}
-export COMINgfs=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/eval/model_data/gfs/prod/gfs.$INITDATE
+#export COMINgfs=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/eval/model_data/gfs/prod/gfs.$INITDATE
+export COMINgfs=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_stand_alone/retrotestgfs05/gfs.$INITDATE
 export COMINccpa=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/ccpa_accum6hr
 export COMINobsproc=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/prepbufr
 export DCOMINcmc_precip=${DCOMINcmc_precip:-$DCOMROOT/${INITDATE}/qpf_verif}

@@ -12,7 +12,7 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/EVS
 
 export SENDCOM=YES
 export SENDMAIL=NO
@@ -40,7 +40,7 @@ export RUN=atmos
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
 
 export MODELNAME="gfs"
 export OBSNAME="osi_saf ghrsst_ospo ccpa_accum24hr prepbufr_gdas prepbufr_nam"

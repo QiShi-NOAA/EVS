@@ -3,7 +3,7 @@
 #PBS -S /bin/bash
 #PBS -q dev
 #PBS -A VERF-DEV
-#PBS -l walltime=01:10:00
+#PBS -l walltime=08:00:00
 #PBS -l place=vscatter:exclhost,select=1:ncpus=128:ompthreads=1:mem=225GB
 #PBS -l debug=true
 
@@ -12,7 +12,7 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/EVS
 
 export SENDCOM=YES
 export SENDMAIL=NO
@@ -43,15 +43,36 @@ export RUN=atmos
 export VERIF_CASE=grid2grid
 export MODELNAME=gfs
 
+
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
-export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/$NET/$evs_ver_2d/$STEP/$COMPONENT
+export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d/$STEP/$COMPONENT
 
 export config=$HOMEevs/parm/evs_config/global_det/config.evs.prod.${STEP}.${COMPONENT}.${RUN}.${VERIF_CASE}.${MODELNAME}
 
+# LOOP through INITDATEs 
+START_DATE=20241118
+END_DATE=20241123
+
+current_date=$START_DATE
+
+while [ "$current_date" -le "$END_DATE" ]; do
+    export VDATE=$current_date
+    echo "=== Running JEVS_GLOBAL_DET_PREP for VDATE=$VDATE ==="
+
+    $HOMEevs/jobs/JEVS_GLOBAL_DET_STATS
+    echo "=== Finished job for $VDATE. Sleeping 60 minutes... ==="
+    sleep 3600  # 60 minutes
+
+    # Move to next date
+    current_date=$(date -d "$current_date +1 day" +%Y%m%d)
+done
+
+echo "=== All jobs completed from $START_DATE to $END_DATE ==="
+
 # CALL executable job script here
-$HOMEevs/jobs/JEVS_GLOBAL_DET_STATS
+#$HOMEevs/jobs/JEVS_GLOBAL_DET_STATS
 
 ######################################################################
 # Purpose: This does the statistics work for the global deterministic

@@ -526,9 +526,7 @@ if VERIF_CASE_STEP == 'grid2grid_stats':
             elif VERIF_CASE_STEP_type == 'snow':
                 # NOHRSC
                 nohrsc_prod_file_format = os.path.join(
-                    DCOMINnohrsc, '{valid?fmt=%Y%m%d}', 'wgrbbul',
-                    'nohrsc_snowfall',
-                    'sfav2_CONUS_24h_{valid?fmt=%Y%m%d%H}_grid184.grb2'
+                     DCOMINnohrsc, 'nohrsc.{valid?fmt=%Y%m%d%H}.24h'
                 )
                 nohrsc_arch_file_format = os.path.join(
                     archive_obs_data_dir, 'nohrsc_accum24hr',
@@ -855,10 +853,7 @@ elif STEP == 'plots' :
             )
         ]
         source_nohrsc_file = os.path.join(
-            DCOMINnohrsc, end_date_dt.strftime('%Y%m%d'),
-            'wgrbbul', 'nohrsc_snowfall',
-            'sfav2_CONUS_24h_'+end_date_dt.strftime('%Y%m%d')
-            +NOHRSC24hr_valid_hr_list[0]+'_grid184.grb2'
+            DCOMINnohrsc, 'nohrsc.'+end_date_dt.strftime('%Y%m%d')+'12.24h'
         )
         dest_nohrsc_file = os.path.join(
             VERIF_CASE_STEP_data_dir, 'nohrsc',
