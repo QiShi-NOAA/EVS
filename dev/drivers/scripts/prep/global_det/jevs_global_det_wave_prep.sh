@@ -3,7 +3,7 @@
 #PBS -S /bin/bash
 #PBS -q dev
 #PBS -A VERF-DEV
-#PBS -l walltime=00:10:00
+#PBS -l walltime=05:00:00
 #PBS -l place=shared,select=1:ncpus=1:mem=15GB
 #PBS -l debug=true
 
@@ -46,7 +46,7 @@ export MODELNAME="gfs"
 export OBSNAME="prepbufr_gdas ndbc jason3"
 
 # LOOP through INITDATE
-START_DATE=20241125
+START_DATE=20241126
 END_DATE=20241130
 
 current_date=$START_DATE

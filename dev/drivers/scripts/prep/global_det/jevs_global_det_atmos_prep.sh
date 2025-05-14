@@ -47,8 +47,8 @@ export OBSNAME="osi_saf ghrsst_ospo ccpa_accum24hr prepbufr_gdas prepbufr_nam"
 
 
 # LOOP through INITDATEs
-START_DATE=20241201
-END_DATE=20241210
+START_DATE=20241210
+END_DATE=20241220
 
 current_date=$START_DATE
 
