@@ -70,7 +70,8 @@ class Templates():
         Example: 
         "{RUN_CASE_LOWER}/{MODEL}/{valid?fmt=%Y%m}/{MODEL}_{valid?fmt=%Y%m%d}*"
         '''
-        self.output_base_template = "evs.stats.*.v{valid?fmt=%Y%m%d}.stat"
+        #self.output_base_template = "evs.stats.*.v{valid?fmt=%Y%m%d}.stat"
+        self.output_base_template = "evs.stats.{MODEL_LOWER}.wave.grid2obs.v{valid?fmt=%Y%m%d}.stat"
 
 class Paths():
     def __init__(self):
@@ -641,6 +642,12 @@ class ModelSpecs():
                       'marker': 'P', 'markersize': 11,
                       'linestyle': 'dashed', 'linewidth': 1.8},
             'GFS': {'color': '#000000',
+                    'marker': 'o', 'markersize': 10,
+                    'linestyle': 'solid', 'linewidth': 2.},
+            'GFSV16': {'color': '#000000',
+                    'marker': 'o', 'markersize': 10,
+                    'linestyle': 'solid', 'linewidth': 2.},
+            'GFSV17': {'color': '#ed2939',
                     'marker': 'o', 'markersize': 10,
                     'linestyle': 'solid', 'linewidth': 2.},
             'GFS_DASHED': {'color': '#000000',

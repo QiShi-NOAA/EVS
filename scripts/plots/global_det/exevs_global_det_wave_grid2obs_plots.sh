@@ -19,7 +19,7 @@ echo "in $0"
 echo "Starting grid2obs_plots for ${RUN}"
 echo "Starting at : `date`"
 
-export model_list="gfs"
+export model_list="gfsv16 gfsv17"
 export modnam_list=$(echo $model_list | tr '[a-z]' '[A-Z]')
 
 mkdir -p ${DATA}/stats
@@ -48,8 +48,8 @@ while (( ${theDate} <= ${VDATE_END} )); do
             fi
             echo "${alert_word}: $input_stats_file does not exist"
         fi
-        theDate=$($NDATE +24 ${theDate}${vhr} | cut -c 1-8)
     done
+    theDate=$($NDATE +24 ${theDate}${vhr} | cut -c 1-8)
 done
 ####################
 # quick error check

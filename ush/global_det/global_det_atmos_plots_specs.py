@@ -1048,9 +1048,11 @@ class PlotSpecs:
                     have_subplotsN_levs = have_subplot0_levs
                     subplotsN_levs = subplot0_levs
                 if not have_subplotsN_levs:
-                    for N in range(len(subplotsN_data[:,0,0])):
+                    #for N in range(len(subplotsN_data[:,0,0])):
+                    for N in range(len(np.array(subplotsN_data)[:,0,0])):
                         if stat in ['BIAS', 'ME', 'FBIAS']:
-                            subplotN_data = subplotsN_data[N,:,:]
+                            #subplotN_data = subplotsN_data[N,:,:]
+                            subplotN_data = np.array(subplotsN_data)[N,:,:]
                             if np.nanmax(subplotN_data) > 100:
                                 spacing = 2.25
                             elif np.nanmax(subplotN_data) > 100:
@@ -1062,7 +1064,8 @@ class PlotSpecs:
                             elif stat == 'FBIAS':
                                 center_value = 1
                         else:
-                            subplotN_data = (subplotsN_data[N,:,:]
+                            #subplotN_data = (subplotsN_data[N,:,:]
+                            subplotN_data = (np.array(subplotsN_data)[N,:,:]
                                              - subplot0_data)
                             center_value = 0
                             spacing = 1.25
@@ -1175,6 +1178,12 @@ class PlotSpecs:
                     'marker': 'None', 'markersize': 0,
                     'linestyle': 'solid', 'linewidth': 2},
             'gfs': {'color': '#000000',
+                    'marker': 'o', 'markersize': 6,
+                    'linestyle': 'solid', 'linewidth': 3},
+            'gfsv16': {'color': '#000000',
+                    'marker': 'o', 'markersize': 6,
+                    'linestyle': 'solid', 'linewidth': 3},
+            'gfsv17': {'color': '#fb2020',
                     'marker': 'o', 'markersize': 6,
                     'linestyle': 'solid', 'linewidth': 3},
             'gfs00Z': {'color': '#000000',

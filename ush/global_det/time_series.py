@@ -1090,7 +1090,8 @@ def plot_time_series(df: pd.DataFrame, logger: logging.Logger,
     date_start_savename = date_range[0].strftime('%Y%m%d')
     date_end_savename = date_range[1].strftime('%Y%m%d')
     if str(eval_period).upper() == 'TEST':
-        time_period_savename = f'{date_start_savename}-{date_end_savename}'
+        #time_period_savename = f'{date_start_savename}-{date_end_savename}'
+        time_period_savename = f'{eval_period}'
     else:
         time_period_savename = f'{eval_period}'
     if str(models_savename).lower() == 'gefs':

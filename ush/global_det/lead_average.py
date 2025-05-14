@@ -746,18 +746,19 @@ def plot_lead_average(df: pd.DataFrame, logger: logging.Logger,
         #        mod_setting_dicts[m]['markersize'], 'white'
         #    )
         #]
-        if display_averages:
-            if metric2_name is not None:
-                labels+=[
-                    f'{model_plot_name} ({metric1_mean_fmt_string},'
-                    + f' {metric2_mean_fmt_string})'
-                ]
-            else:
-                labels+=[
-                    f'{model_plot_name} ({metric1_mean_fmt_string})'
-                ]
-        else:
-            labels+=[f'{model_plot_name}']
+        ###comment out by Qi to plot 2 models#################################
+        #if display_averages:
+        #    if metric2_name is not None:
+        #        labels+=[
+        #            f'{model_plot_name} ({metric1_mean_fmt_string},'
+        #            + f' {metric2_mean_fmt_string})'
+        #        ]
+        #    else:
+        #        labels+=[
+        #            f'{model_plot_name} ({metric1_mean_fmt_string})'
+        #        ]
+        #else:
+        #    labels+=[f'{model_plot_name}']
 
     # Zero line
     plt.axhline(y=0, color='black', linestyle='--', linewidth=1, zorder=0) 
@@ -1081,7 +1082,9 @@ def plot_lead_average(df: pd.DataFrame, logger: logging.Logger,
     date_start_savename = date_range[0].strftime('%Y%m%d')
     date_end_savename = date_range[1].strftime('%Y%m%d')
     if str(eval_period).upper() == 'TEST':
-        time_period_savename = f'{date_start_savename}-{date_end_savename}'
+        #modified by Qi
+        #time_period_savename = f'{date_start_savename}-{date_end_savename}'
+        time_period_savename = f'{eval_period}'
     else:
         time_period_savename = f'{eval_period}'
     if str(models_savename).lower() == 'gefs':

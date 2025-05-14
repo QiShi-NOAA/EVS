@@ -29,9 +29,9 @@ export RUN_GRID2OBS_PLOTS="YES"
 #model_list:                 model names
 #model_evs_data_dir_list:    base path to "evs_data" directory
 #model_file_format_list:     file format of model files
-export model_list="gfs"
-export model_evs_data_dir_list="$COMIN/stats/$COMPONENT/gfs"
-export model_file_format_list="$COMROOT/gfs/${gfs_ver}/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/atmos/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H}"
+export model_list="gfsv16 gfsv17"
+export model_evs_data_dir_list="$COMIN/stats/$COMPONENT/gfsv16 $COMIN/stats/$COMPONENT/gfsv17"
+export model_file_format_list="/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/eval/model_data/gfs/prod/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/atmos/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H} /lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_stand_alone/retrotestgfs05/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/products/atmos/grib2/0p25/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H}"
 ## OUTPUT DATA SETTINGS
 #OUTPUTROOT: base output directory
 export OUTPUTROOT="$DATAROOT"
@@ -56,7 +56,7 @@ if [ $RUN_GRID2OBS_PLOTS = YES ]; then
     #    g2op_*_fhr_min: forecast hour to start verification: HH[H]
     #    g2op_*_fhr_max: forecast hour to end verification: HH[H]
     #    g2op_*_fhr_inc: frequency to verify forecast hours: at HH[H]
-    export g2op_model_plot_name_list="gfs"
+    export g2op_model_plot_name_list="GFSv16 GFSv17"
     export g2op_type_list="sfc"
     export g2op_event_equalization="NO"
     export g2op_sfc_init_hr_list="00 06 12 18"

@@ -407,9 +407,18 @@ class LeadAverage:
             else:
                 self.logger.debug(f"{model_num} [{model_num_name},"
                                   +f"{model_num_plot_name}] has no points")
-            masked_model_num_model1_diff_data = np.ma.masked_invalid(
-                model_num_data - model1_masked_model_num_data
-            )
+            #masked_model_num_model1_diff_data = np.ma.masked_invalid(
+            #    model_num_data - model1_masked_model_num_data
+            #)
+            ###############add if statement in case model1 does not assigned#########
+            if 'model1_masked_model_num_data' in locals():
+                masked_model_num_model1_diff_data = np.ma.masked_invalid(
+                       model_num_data - model1_masked_model_num_data
+                )
+            else:
+                masked_model_num_model1_diff_data = np.ma.masked_invalid(
+                   model_num_data - model_num_data)
+            ##########################################################################
             model_num_diff_npts = (
                 len(masked_model_num_model1_diff_data)
                 - np.ma.count_masked(masked_model_num_model1_diff_data)
@@ -418,10 +427,16 @@ class LeadAverage:
                 np.ma.getmask(masked_model_num_model1_diff_data),
                 forecast_hours_avg_df.columns.values.tolist()
             )
-            self.logger.debug(f"Plotting {model_num} [{model_num_name},"
+            #self.logger.debug(f"Plotting {model_num} [{model_num_name},"
+            #                  +f"{model_num_plot_name}] difference from "
+            #                  +f"model1 [{model1_name},"
+            #                  +f"{model1_plot_name}]")
+            if 'model1_name' in locals():    #added by Qi
+                self.logger.debug(f"Plotting {model_num} [{model_num_name},"
                               +f"{model_num_plot_name}] difference from "
                               +f"model1 [{model1_name},"
                               +f"{model1_plot_name}]")
+
             if model_num_diff_npts != 0:
                 ax2.plot(
                     np.ma.compressed(masked_diff_forecast_hours),
@@ -447,7 +462,8 @@ class LeadAverage:
                         masked_model_num_model1_diff_data.max()
                     )
             else:
-                self.logger.debug(f"{model_num} [{model_num_name},"
+                if 'model1_name' in locals():  #add by Qi
+                    self.logger.debug(f"{model_num} [{model_num_name},"
                                   +f"{model_num_plot_name}] difference from "
                                   +f"model1 [{model1_name},{model1_plot_name}] "
                                   +"has no points")
@@ -476,7 +492,8 @@ class LeadAverage:
                     np.ma.getmask(masked_model_num_model1_diff_ci_data),
                     forecast_hours_ci_df.columns.values.tolist()
                 )
-                self.logger.debug(f"Plotting {model_num} ["
+                if 'model1_name' in locals(): #added by Qi
+                    self.logger.debug(f"Plotting {model_num} ["
                                   +f"{model_num_name},"
                                   +f"{model_num_plot_name}] difference "
                                   +f"from model1 [{model1_name},"
@@ -525,7 +542,8 @@ class LeadAverage:
                                 edgecolor=model_num_plot_settings_dict['color'],
                                 linewidth=1)
                 else:
-                    self.logger.debug(f"{model_num}: ["
+                    if 'model1_name' in locals(): #added by Qi
+                        self.logger.debug(f"{model_num}: ["
                                       +f"{model_num_name},"
                                       +f"{model_num_plot_name}] difference "
                                       +f"from model1 [{model1_name},"

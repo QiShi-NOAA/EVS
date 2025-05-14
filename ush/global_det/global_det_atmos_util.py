@@ -2455,9 +2455,9 @@ def check_plot_files(job_dict):
                 if int(plot_dict['forecast_hour']) > 72 \
                         or plot_dict['vx_mask'] != 'conus':
                     psm_model_list = ['gfs']
-                elif int(plot_dict['forecast_hour']) > 48 \
-                        and plot_dict['vx_mask'] == 'conus':
-                    psm_model_list.remove('cmc_regional')
+                #elif int(plot_dict['forecast_hour']) > 48 \
+                #        and plot_dict['vx_mask'] == 'conus':
+                    #psm_model_list.remove('cmc_regional')
                 if plot_dict['vx_mask'] == 'conus' \
                         and int(plot_dict['forecast_hour']) == 24:
                     for img_type in ['png', 'gif']:
