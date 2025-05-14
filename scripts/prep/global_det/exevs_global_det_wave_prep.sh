@@ -20,6 +20,7 @@ for MODEL in $MODELNAME; do
     mkdir -p ${DATA}/${MODEL}
     # Copy the GFS 0.25 degree wave forecast files
     if [ $MODEL == "gfs" ]; then
+        #inithours='00 06 12 18'
 	inithours='00 12'
         lead_hours='000 006 012 018 024 030 036 042 048 054 060 066 072 078
             084 090 096 102 108 114 120 126 132 138 144 150 156 162
@@ -28,7 +29,7 @@ for MODEL in $MODELNAME; do
             336 342 348 354 360 366 372 378 384'
         for inithour in ${inithours} ; do
             for hr in ${lead_hours} ; do
-		input_filename="${COMINgfs}/${inithour}/products/wave/gridded/global.0p25/gfs.wave.t${inithour}z.global.0p25.f${hr}.grib2"
+		input_filename="${COMINgfs}/${inithour}/wave/gfswave.t${inithour}z.global.0p25.f${hr}.grib2"
                 tmp_filename="${DATA}/${MODEL}/gfswave.${INITDATE}.t${inithour}z.global.0p25.f${hr}.grib2"
                 output_filename="${COMOUT}.${INITDATE}/${MODEL}/gfswave.${INITDATE}.t${inithour}z.global.0p25.f${hr}.grib2"
                 if [ ! -s $output_filename ] ; then

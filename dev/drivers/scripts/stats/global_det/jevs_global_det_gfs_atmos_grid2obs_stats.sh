@@ -12,7 +12,7 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv16/EVS
 
 export SENDCOM=YES
 export SENDMAIL=NO
@@ -45,23 +45,23 @@ export MODELNAME=gfs
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
-export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d/$STEP/$COMPONENT
+export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv16/$NET/$evs_ver_2d
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv16/$NET/$evs_ver_2d/$STEP/$COMPONENT
 
 export config=$HOMEevs/parm/evs_config/global_det/config.evs.prod.${STEP}.${COMPONENT}.${RUN}.${VERIF_CASE}.${MODELNAME}
 
-#LOOP through INITDATEs
-START_DATE=20241121
-END_DATE=20241124
+# LOOP through INITDATEs
+START_DATE=20241110
+END_DATE=20241118
 
 current_date=$START_DATE
 
 while [ "$current_date" -le "$END_DATE" ]; do
     export VDATE=$current_date
-    echo "=== Running JEVS_GLOBAL_DET_PREP for VDATE=$VDATE ==="
+    echo "=== Running JEVS_GLOBAL_DET_PREP for INITDATE=$VDATE ==="
 
     $HOMEevs/jobs/JEVS_GLOBAL_DET_STATS
-    echo "=== Finished job for $VDATE. Sleeping 90 minutes... ==="
+    echo "=== Finished job for $INITDATE. Sleeping 90 minutes... ==="
     sleep 5400  # 90 minutes
 
     # Move to next date
@@ -71,7 +71,7 @@ done
 echo "=== All jobs completed from $START_DATE to $END_DATE ==="
 
 # CALL executable job script here
-#$HOMEevs/jobs/JEVS_GLOBAL_DET_STATS
+$HOMEevs/jobs/JEVS_GLOBAL_DET_STATS
 
 ######################################################################
 # Purpose: This does the statistics work for the global deterministic

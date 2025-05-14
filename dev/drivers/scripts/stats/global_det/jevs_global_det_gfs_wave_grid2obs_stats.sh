@@ -12,7 +12,7 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv16/EVS
 
 export SENDCOM=YES
 export SENDMAIL=NO
@@ -47,12 +47,12 @@ export MODELNAME=gfs
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
-export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d/$STEP/$COMPONENT
+export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv16/$NET/$evs_ver_2d
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv16/$NET/$evs_ver_2d/$STEP/$COMPONENT
 
-# LOOP through INITDATEs
-START_DATE=20241118
-END_DATE=20241124
+# LOOP through INITDATEs 
+START_DATE=20241110
+END_DATE=20241119
 
 current_date=$START_DATE
 
@@ -69,6 +69,8 @@ while [ "$current_date" -le "$END_DATE" ]; do
 done
 
 echo "=== All jobs completed from $START_DATE to $END_DATE ==="
+
+
 
 # CALL executable job script here
 #$HOMEevs/jobs/JEVS_GLOBAL_DET_STATS

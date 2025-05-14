@@ -3,7 +3,7 @@
 #PBS -S /bin/bash
 #PBS -q dev
 #PBS -A VERF-DEV
-#PBS -l walltime=08:00:00
+#PBS -l walltime=00:10:00
 #PBS -l place=shared,select=1:ncpus=1:mem=15GB
 #PBS -l debug=true
 
@@ -12,11 +12,11 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv16/EVS
 
 export SENDCOM=YES
 export SENDMAIL=NO
-export KEEPDATA=NO
+export KEEPDATA=YES
 export job=${PBS_JOBNAME:-jevs_global_det_wave_prep}
 export jobid=$job.${PBS_JOBID:-$$}
 export SITE=$(cat /etc/cluster_name)
@@ -37,25 +37,26 @@ export STEP=prep
 export COMPONENT=global_det
 export RUN=wave
 
-
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv16/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
 
 export MODELNAME="gfs"
 export OBSNAME="prepbufr_gdas ndbc jason3"
 
-# LOOP through INITDATEs
-START_DATE=20241102
-END_DATE=20241109
+# LOOP through INITDATE
+START_DATE=20241125
+END_DATE=20241130
 
 current_date=$START_DATE
 
 while [ "$current_date" -le "$END_DATE" ]; do
     export INITDATE=$current_date
     echo "=== Running JEVS_GLOBAL_DET_PREP for INITDATE=$INITDATE ==="
+
     $HOMEevs/jobs/JEVS_GLOBAL_DET_PREP
+
     echo "=== Finished job for $INITDATE. Sleeping 10 minutes... ==="
     sleep 600  # 10 minutes
 
@@ -64,6 +65,7 @@ while [ "$current_date" -le "$END_DATE" ]; do
 done
 
 echo "=== All jobs completed from $START_DATE to $END_DATE ==="
+
 
 # CALL executable job script here
 #$HOMEevs/jobs/JEVS_GLOBAL_DET_PREP
