@@ -16,7 +16,7 @@ export model=evs
 export HOMEevs=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS/EVS/
 
 export SENDCOM=YES
-export KEEPDATA=YES
+export KEEPDATA=NO
 export SENDDBN=NO
 export job=${PBS_JOBNAME:-jevs_global_det_graphcastgfs_atmos_grid2grid_precip_plots_90days}
 export jobid=$job.${PBS_JOBID:-$$}

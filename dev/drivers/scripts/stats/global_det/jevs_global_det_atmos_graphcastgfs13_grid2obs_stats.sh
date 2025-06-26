@@ -17,7 +17,7 @@ export HOMEevs=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS/EVS
 
 export SENDCOM=YES
 export SENDMAIL=NO
-export KEEPDATA=YES
+export KEEPDATA=NO
 export job=${PBS_JOBNAME:-jevs_global_det_atmos_graphcastgfs13_grid2obs_stats}
 export jobid=$job.${PBS_JOBID:-$$}
 export SITE=$(cat /etc/cluster_name)
