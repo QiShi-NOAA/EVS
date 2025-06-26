@@ -485,7 +485,9 @@ class PlotSpecs:
             '24hrNOHRSC': 'NOHRSC',
             'osi_saf': 'OSI-SAF',
             'ghrsst_ospo': 'GHRSST-OSPO',
-            'ADPSFC': 'METARS'
+            'ADPSFC': 'METARS',
+            'gfsv16': "Model's Own Anl.",
+            'gfsv16_anl': "Model's Own Anl."
         }
         if ob_name in list(obs_plot_name_dict.keys()):
             obs_plot_name = obs_plot_name_dict[ob_name]
