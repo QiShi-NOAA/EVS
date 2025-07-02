@@ -40,8 +40,21 @@ COMPONENT = os.environ['COMPONENT']
 VERIF_CASE = os.environ['VERIF_CASE']
 STEP = os.environ['STEP']
 MODELNAME = os.environ['MODELNAME']
-VDATE = os.environ['VDATE']
-vdate_dt = datetime.strptime(VDATE, '%Y%m%d')
+if STEP == 'prep':
+    INITDATE = os.environ['INITDATE']
+    vdate_dt = datetime.strptime(INITDATE, '%Y%m%d')
+elif STEP == 'stats':
+    VDATE = os.environ['VDATE']
+    vdate_dt = datetime.strptime(VDATE, '%Y%m%d')
+    COMOUTsmall = os.environ['COMOUTsmall']
+    RESTART_DIR = os.environ['RESTART_DIR']
+    COMPLETED_JOBS_DIR = os.environ['COMPLETED_JOBS_DIR']
+    job_type = os.environ['job_type']
+elif STEP == 'plots':
+    VDATE = os.environ['VDATE']
+    vdate_dt = datetime.strptime(VDATE, '%Y%m%d')
+    RESTART_DIR = os.environ['RESTART_DIR']
+    COMPLETED_JOBS_DIR = os.environ['COMPLETED_JOBS_DIR']
 if VERIF_CASE == "precip":
     if STEP == 'prep':
         FHR_END_FULL = os.environ['FHR_END_FULL']
@@ -102,14 +115,6 @@ elif VERIF_CASE == "headline":
     if STEP == 'plots':
         all_eval_periods = cutil.get_all_eval_periods(graphics_hdl)
         COMOUTplots = os.environ['COMOUTplots']
-if STEP == 'stats':
-    COMOUTsmall = os.environ['COMOUTsmall']
-    RESTART_DIR = os.environ['RESTART_DIR']
-    COMPLETED_JOBS_DIR = os.environ['COMPLETED_JOBS_DIR']
-    job_type = os.environ['job_type']
-if STEP == 'plots':
-    RESTART_DIR = os.environ['RESTART_DIR']
-    COMPLETED_JOBS_DIR = os.environ['COMPLETED_JOBS_DIR']
 
 
 # Define data base directorie
@@ -641,7 +646,7 @@ elif STEP == 'plots':
         COMOUT_dir_list.append(os.path.join(
             COMOUTplots, VERIF_CASE
         ))
-        for plot_group in ['precip']:
+        for plot_group in ['snowfall']:
             for eval_period in all_eval_periods:
                 working_dir_list.append(os.path.join(
                     working_output_base_dir, 'out', str(plot_group).lower(), 
@@ -678,7 +683,7 @@ elif STEP == 'plots':
             COMOUTplots, VERIF_CASE
         ))
         for plot_group in [
-                'cape', 'ceil_vis', 'precip', 'sfc_upper'
+                'sfc_upper'
             ]:
             for eval_period in all_eval_periods:
                 working_dir_list.append(os.path.join(
