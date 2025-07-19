@@ -398,17 +398,28 @@ if VERIF_CASE_STEP == 'grid2grid_stats':
                 while accum_valid > accum_valid_start:
                     if VERIF_CASE_STEP_type == 'precip_accum3hr' \
                             and int(accum_valid.strftime('%H'))%6 != 0:
+                        #ccpa_prod_file_format = os.path.join(
+                        #    COMINccpa, 'ccpa.{valid_shift?fmt=%Y%m%d?shift=3}',
+                        #   '{valid_shift?fmt=%H?shift=3}',
+                        #   'ccpa.t{valid?fmt=%H}z.'
+                        #   +str(ccpa_accum_intvl).zfill(2)+'h.hrap.conus.gb2'
+                        #)
                         ccpa_prod_file_format = os.path.join(
-                            COMINccpa, 'ccpa.{valid_shift?fmt=%Y%m%d?shift=3}',
-                           '{valid_shift?fmt=%H?shift=3}',
-                           'ccpa.t{valid?fmt=%H}z.'
-                           +str(ccpa_accum_intvl).zfill(2)+'h.hrap.conus.gb2'
-                        )
+                            COMINccpa,'ccpa_accum'
+                            +str(ccpa_accum_intvl)+'hr',
+                            'ccpa.hrap.{valid?fmt=%Y%m%d%H}.'
+                            +str(ccpa_accum_intvl)+'h'
+                        )     
                     else:
+                        #ccpa_prod_file_format = os.path.join(
+                        #    COMINccpa, 'ccpa.{valid?fmt=%Y%m%d}',
+                        #   '{valid?fmt=%H}', 'ccpa.t{valid?fmt=%H}z.'
+                        #   +str(ccpa_accum_intvl).zfill(2)+'h.hrap.conus.gb2'
+                        #)
                         ccpa_prod_file_format = os.path.join(
-                            COMINccpa, 'ccpa.{valid?fmt=%Y%m%d}',
-                           '{valid?fmt=%H}', 'ccpa.t{valid?fmt=%H}z.'
-                           +str(ccpa_accum_intvl).zfill(2)+'h.hrap.conus.gb2'
+                            COMINccpa,
+                            'ccpa.hrap.{valid?fmt=%Y%m%d%H}.'
+                             +str(ccpa_accum_intvl)+'h'
                         )
                     ccpa_arch_file_format = os.path.join(
                         archive_obs_data_dir, 'ccpa_accum'
@@ -626,10 +637,14 @@ elif VERIF_CASE_STEP == 'grid2obs_stats':
                 # GDAS prepbufr
                 if VERIF_CASE_STEP_type_valid_time.strftime('%H') \
                         in ['00', '06', '12', '18']:
+                    #gdas_prod_file_format = os.path.join(
+                    #    COMINobsproc, 'gdas.{valid?fmt=%Y%m%d}',
+                    #    '{valid?fmt=%H}', 'atmos',
+                    #    'gdas.t{valid?fmt=%H}z.prepbufr'
+                    #)
                     gdas_prod_file_format = os.path.join(
-                        COMINobsproc, 'gdas.{valid?fmt=%Y%m%d}',
-                        '{valid?fmt=%H}', 'atmos',
-                        'gdas.t{valid?fmt=%H}z.prepbufr'
+                            COMINobsproc, 'gdas',
+                            'prepbufr.gdas.{valid?fmt=%Y%m%d%H}'
                     )
                     gdas_arch_file_format = os.path.join(
                         archive_obs_data_dir, 'prepbufr', 'gdas',
@@ -657,10 +672,15 @@ elif VERIF_CASE_STEP == 'grid2obs_stats':
                     VERIF_CASE_STEP_type_valid_time
                     + datetime.timedelta(hours=int(offset_hr))
                 )
+                #nam_prod_file_format = os.path.join(
+                #    COMINobsproc, 'nam.{valid?fmt=%Y%m%d}',
+                #    'nam.t{valid?fmt=%H}z.prepbufr.tm'+offset_hr
+                #)
                 nam_prod_file_format = os.path.join(
-                    COMINobsproc, 'nam.{valid?fmt=%Y%m%d}',
+                    COMINobsproc,
+                    'nam', 'nam.{valid?fmt=%Y%m%d}',
                     'nam.t{valid?fmt=%H}z.prepbufr.tm'+offset_hr
-                )
+                )    
                 nam_prod_file = gda_util.format_filler(
                     nam_prod_file_format, offset_valid_time_dt,
                     offset_valid_time_dt, ['anl'], {}
@@ -692,10 +712,15 @@ elif VERIF_CASE_STEP == 'grid2obs_stats':
                     nam_dest_file
                 )
                 # RAP prepbufr
+                #rap_prod_file_format = os.path.join(
+                #    COMINobsproc, 'rap.{valid?fmt=%Y%m%d}',
+                #    'rap.t{valid?fmt=%H}z.prepbufr.tm00'
+                #)
                 rap_prod_file_format = os.path.join(
-                    COMINobsproc, 'rap.{valid?fmt=%Y%m%d}',
+                    COMINobsproc,
+                    'rap', 'rap.{valid?fmt=%Y%m%d}',
                     'rap.t{valid?fmt=%H}z.prepbufr.tm00'
-                )
+                )     
                 rap_arch_file_format = os.path.join(
                     archive_obs_data_dir, 'prepbufr',
                     'rap', 'rap.{valid?fmt=%Y%m%d}',

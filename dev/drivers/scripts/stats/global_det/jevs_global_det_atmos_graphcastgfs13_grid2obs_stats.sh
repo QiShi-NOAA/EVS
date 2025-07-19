@@ -13,11 +13,11 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS/EVS-backfill
 
 export SENDCOM=YES
 export SENDMAIL=NO
-export KEEPDATA=YES
+export KEEPDATA=NO
 export job=${PBS_JOBNAME:-jevs_global_det_atmos_graphcastgfs13_grid2obs_stats}
 export jobid=$job.${PBS_JOBID:-$$}
 export SITE=$(cat /etc/cluster_name)
@@ -47,7 +47,7 @@ export MODELNAME=graphcastgfs13
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS//$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS/$NET/$evs_ver_2d/$STEP/$COMPONENT
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS/evs-backfill/$evs_ver_2d/$STEP/$COMPONENT
 
 export config=$HOMEevs/parm/evs_config/global_det/config.evs.${STEP}.${COMPONENT}.${RUN}.${VERIF_CASE}.graphcastgfs
 
