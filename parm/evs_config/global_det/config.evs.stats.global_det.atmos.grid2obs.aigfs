@@ -31,8 +31,7 @@ export RUN_GRID2OBS_PLOTS="NO"
 #model_file_format_list: file format of model files
 export model_list="$MODELNAME"
 export model_evs_data_dir_list="$COMOUTfinal"
-#export model_file_format_list="/lfs/h1/ops/para/com/aigfs/v1.0/aigfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/aigfs.t{init?fmt=%2H}z.pres.f{lead?fmt=%3H}.grib2"
-export model_file_format_list="$COMIN/prep/$COMPONENT/aigfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/aigfs.t{init?fmt=%2H}z.combined.f{lead?fmt=%3H}.grib2"
+export model_file_format_list="$COMIN/prep/$COMPONENT/aigfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/atmos/aigfs.t{init?fmt=%2H}z.combined.f{lead?fmt=%3H}.grib2"
 
 ## OUTPUT DATA SETTINGS
 #OUTPUTROOT: base output directory
