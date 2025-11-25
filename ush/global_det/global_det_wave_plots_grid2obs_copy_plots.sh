@@ -80,7 +80,8 @@ for period in ${periods} ; do
             # Lead average plots
 	    #imagename=evs.${COMPONENT}.${image_stat}.${image_var}_${image_level}_${obtypel}.last${NDAYS}days.fhrmean_valid${valid_hour}z_f384.latlon_0p25_${regionl}.png
 	    imagename=evs.gfsv16_gfsv17.${image_stat}.${image_var}_${image_level}_${obtypel}.test.fhrmean_valid${valid_hour}z_f384.latlon_0p25_${regionl}.png
-            tmp_image=$DATA/images/$imagename
+	    imagename2=evs.gfsv16_gfsv17.${image_stat}.${image_var}_${image_level}_${obtypel}.last${NDAYS}days.fhrmean_valid${valid_hour}z_f384.latlon_0p25_${regionl}.png
+            tmp_image=$DATA/images/$imagename2
             job_work_dir=${DATA}/job_work_dir/plot_obs${OBTYPE}_${wvar}_v${valid_hour}z_${stats}_lead_average_${period}_${region}
             job_image=$job_work_dir/images/$imagename
             if [ ! -s $tmp_image ]; then
@@ -94,7 +95,8 @@ for period in ${periods} ; do
             for fhr in ${fhrs} ; do
                 #imagename=evs.${COMPONENT}.${image_stat}.${image_var}_${image_level}_${obtypel}.last${NDAYS}days.timeseries_valid${valid_hour}z_f${fhr}.latlon_0p25_${regionl}.png
 		imagename=evs.gfsv16_gfsv17.${image_stat}.${image_var}_${image_level}_${obtypel}.test.timeseries_valid${valid_hour}z_f${fhr}.latlon_0p25_${regionl}.png
-                tmp_image=$DATA/images/$imagename
+		imagename2=evs.gfsv16_gfsv17.${image_stat}.${image_var}_${image_level}_${obtypel}.last${NDAYS}days.timeseries_valid${valid_hour}z_f${fhr}.latlon_0p25_${regionl}.png
+                tmp_image=$DATA/images/$imagename2
                 job_work_dir=${DATA}/job_work_dir/plot_obs${OBTYPE}_${wvar}_v${valid_hour}z_f${fhr}_${stats}_time_series_${period}_${region}
                 job_image=$job_work_dir/images/$imagename
                 if [ ! -s $tmp_image ]; then
