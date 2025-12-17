@@ -11,7 +11,7 @@
 DATE=$(date -d "24 hours ago" '+%Y%m%d')
 DATE=20250924
 echo "${DATE}"
-INPUT_BASE="/lfs/h1/ops/para/com/aigfs/v1.0/aigfs.${DATE}"
+INPUT_BASE="/lfs/h1/ops/prod/com/aigfs/v1.0/aigfs.${DATE}"
 OUTPUT_BASE="/lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_graphcastGFS/evs/v1.0/prep/global_det/aigfs.${DATE}"
 
 # Loop over initial hours
