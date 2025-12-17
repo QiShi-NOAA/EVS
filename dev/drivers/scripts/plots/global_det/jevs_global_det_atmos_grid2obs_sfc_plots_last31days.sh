@@ -46,8 +46,7 @@ export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_compare_plot/$NET/$evs_ver_2d
 today=$(cut -c7-14 ${COMROOT}/date/t${vhr}z)
-#export VDATE_END=${VDATE_END:-$(finddate.sh $today d-1)}
-export VDATE_END=20241124
+export VDATE_END=${VDATE_END:-$(finddate.sh $today d-1)}
 export COMOUT=/lfs/h2/emc/ptmp/${USER}/EVS_stand_alone/EVS_compare_plot/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN.$VDATE_END
 
 # Set config file

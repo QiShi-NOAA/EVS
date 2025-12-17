@@ -31,7 +31,7 @@ export RUN_GRID2OBS_PLOTS="YES"
 #model_file_format_list:     file format of model files
 export model_list="gfsv16 gfsv17"
 export model_evs_data_dir_list="$COMIN/stats/$COMPONENT/gfsv16 $COMIN/stats/$COMPONENT/gfsv17"
-export model_file_format_list="/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/eval/model_data/gfs/prod/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/atmos/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H} /lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_stand_alone/retrotestgfs05/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/products/atmos/grib2/0p25/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H}"
+export model_file_format_list="/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/eval/model_data/gfs/prod/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/atmos/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H} /lfs/h2/emc/vpppg/noscrub/qi.shi/EVS_stand_alone/retrotestgfs05/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/products/atmos/grib2/0p25/gfs.t{init?fmt=%2H}z.pres_a.0p25.f{lead?fmt=%3H}.grib2"
 ## OUTPUT DATA SETTINGS
 #OUTPUTROOT: base output directory
 export OUTPUTROOT="$DATAROOT"
