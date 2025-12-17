@@ -40,33 +40,15 @@ export RUN=wave
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
+#export INITDATE=$(date -d "3 days ago" +%Y%m%d)
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
 
 export MODELNAME="gfs"
 export OBSNAME="prepbufr_gdas ndbc jason3"
 
-# LOOP through INITDATEs
-START_DATE=20241102
-END_DATE=20241109
-
-current_date=$START_DATE
-
-while [ "$current_date" -le "$END_DATE" ]; do
-    export INITDATE=$current_date
-    echo "=== Running JEVS_GLOBAL_DET_PREP for INITDATE=$INITDATE ==="
-    $HOMEevs/jobs/JEVS_GLOBAL_DET_PREP
-    echo "=== Finished job for $INITDATE. Sleeping 10 minutes... ==="
-    sleep 600  # 10 minutes
-
-    # Move to next date
-    current_date=$(date -d "$current_date +1 day" +%Y%m%d)
-done
-
-echo "=== All jobs completed from $START_DATE to $END_DATE ==="
-
 # CALL executable job script here
-#$HOMEevs/jobs/JEVS_GLOBAL_DET_PREP
+$HOMEevs/jobs/JEVS_GLOBAL_DET_PREP
 
 #####################################################################
 # Purpose: This does the prep work for the global deterministic wave

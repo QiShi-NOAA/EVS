@@ -3,7 +3,7 @@
 #PBS -S /bin/bash
 #PBS -q dev
 #PBS -A VERF-DEV
-#PBS -l walltime=05:00:00
+#PBS -l walltime=00:30:00
 #PBS -l place=vscatter,select=1:ncpus=25:mem=50GB
 #PBS -l debug=true
 
@@ -47,31 +47,12 @@ export MODELNAME=gfs
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
+#export VDATE=$(date -d "2 days ago" +%Y%m%d)
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_stand_alone/EVS_gfsv17/$NET/$evs_ver_2d/$STEP/$COMPONENT
 
-# LOOP through INITDATEs
-START_DATE=20241118
-END_DATE=20241124
-
-current_date=$START_DATE
-
-while [ "$current_date" -le "$END_DATE" ]; do
-    export VDATE=$current_date
-    echo "=== Running JEVS_GLOBAL_DET_PREP for VDATE=$VDATE ==="
-
-    $HOMEevs/jobs/JEVS_GLOBAL_DET_STATS
-    echo "=== Finished job for $VDATE. Sleeping 20 minutes... ==="
-    sleep 1200  # 20 minutes
-
-    # Move to next date
-    current_date=$(date -d "$current_date +1 day" +%Y%m%d)
-done
-
-echo "=== All jobs completed from $START_DATE to $END_DATE ==="
-
 # CALL executable job script here
-#$HOMEevs/jobs/JEVS_GLOBAL_DET_STATS
+$HOMEevs/jobs/JEVS_GLOBAL_DET_STATS
 
 #######################################################################
 # Purpose: This does the statistics work for the global deterministic

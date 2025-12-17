@@ -43,7 +43,7 @@ export vhr=${vhr:-00}
 export cycle=${cycle:-t${vhr}z}
 setpdy.sh
 . ./PDY
-#export INITDATE=${INITDATE:-$PDYm1}
+export INITDATE=${INITDATE:-$PDYm1}
 
 ####################################
 # Set data directives
@@ -75,7 +75,8 @@ export DCOMINukmet=${DCOMINukmet:-$DCOMROOT/${INITDATE}/wgrbbul/ukmet_hires}
 export DCOMINukmet_precip=${DCOMINukmet_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
 export DCOMINosi_saf=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/osi_saf
 export DCOMINghrsst_ospo=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data/ghrsst_ospo
-export DCOMINndbc=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data
+#export DCOMINndbc=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data
+export DCOMINndbc=${DCOMINndbc:-$DCOMROOT}
 export DCOMINjason3=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/obs_data
 export COMOUT=${COMOUT:-$(compath.py -o $NET/$evs_ver/$STEP/$COMPONENT/$RUN)}
 mkdir -p $COMOUT.${INITDATE}

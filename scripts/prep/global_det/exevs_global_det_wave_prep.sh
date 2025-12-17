@@ -107,7 +107,8 @@ for OBS in $OBSNAME; do
     # Trim down the NDBC buoy files and run ASCII2NC
     elif [ $OBS == "ndbc" ]; then
         export INITDATEp1=$($NDATE +24 ${INITDATE}${vhr} | cut -c 1-8)
-	input_ndbc_dir=${DCOMINndbc}/ndbc_buoy/${INITDATEp1}
+	#input_ndbc_dir=${DCOMINndbc}/ndbc_buoy/${INITDATEp1}
+	input_ndbc_dir=${DCOMINndbc}/${INITDATEp1}/validation_data/marine/buoy
         tmp_ndbc_file=${DATA}/${OBS}/${OBS}.${INITDATE}.nc
         output_ndbc_file=${COMOUT}.${INITDATE}/${OBS}/${OBS}.${INITDATE}.nc
         if [ ! -s $output_ndbc_file ]; then
