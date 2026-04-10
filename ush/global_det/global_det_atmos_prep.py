@@ -100,12 +100,10 @@ global_det_obs_dict = {
                                                     +'?shift=-24}to'
                                                     +'{init?fmt=%Y%m%d%H}.nc'),
                     'inithours': ['00']},
-    'ccpa_accum24hr': {'input_file_format': os.path.join(COMINccpa,'ccpa.'
-                                                         +'{init?fmt=%Y%m%d}',
-                                                         '{init?fmt=%H}',
-                                                         'ccpa.t{init?fmt=%H}z'
-                                                         +'.06h.hrap.conus.'
-                                                         +'gb2'),
+    'ccpa_accum24hr': {'input_file_format': os.path.join(COMINccpa,
+                                                         'ccpa.hrap.'
+                                                         +'{init?fmt=%Y%m%d%H}'
+                                                         +'.6h'),                       
                        'tmp_file_format': os.path.join(DATA, f"{RUN}.{INITDATE}",
                                                        'ccpa_accum24hr',
                                                        'pcp_combine_'
@@ -114,12 +112,9 @@ global_det_obs_dict = {
                                                        +'{init?fmt=%Y%m%d%H}'
                                                        +'.nc'),
                        'inithours': ['12']},
-    'prepbufr_gdas': {'input_file_format': os.path.join(COMINobsproc, 'gdas.'
-                                                        +'{init?fmt=%Y%m%d}',
-                                                        '{init?fmt=%H}',
-                                                        'atmos', 'gdas.t'
-                                                        +'{init?fmt=%H}'
-                                                        +'z.prepbufr'),
+    'prepbufr_gdas': {'input_file_format': os.path.join(COMINobsproc, 
+                                                        'gdas','prepbufr.gdas.'
+                                                        +'{init?fmt=%Y%m%d%H}'),                      
                       'tmp_file_format': os.path.join(DATA, f"{RUN}.{INITDATE}",
                                                       'prepbufr_gdas', 'pb2nc_'
                                                       +'gdas_{vtype?fmt=str}_'
@@ -127,7 +122,8 @@ global_det_obs_dict = {
                                                       +'{init?fmt=%Y%m%d%H}'
                                                       +'.nc'),
                       'inithours': ['00', '06', '12', '18']},
-    'prepbufr_nam': {'input_file_format': os.path.join(COMINobsproc, 'nam.'
+    'prepbufr_nam': {'input_file_format': os.path.join(COMINobsproc,
+                                                       'nam','nam.'
                                                        +'{init?fmt=%Y%m%d}',
                                                        'nam.t'
                                                        +'{init?fmt=%H}'

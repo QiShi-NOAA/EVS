@@ -32,7 +32,7 @@ export RUN_GRID2OBS_PLOTS="NO"
 #model_file_format_list: file format of model files
 export model_list="$MODELNAME"
 export model_evs_data_dir_list="$COMOUTfinal"
-export model_file_format_list="$COMIN/prep/$COMPONENT/${RUN}.{init?fmt=%Y%m%d}/${MODELNAME}/${MODELNAME}.t{init?fmt=%H}z.f{lead?fmt=%3H}"
+export model_file_format_list="$COMINaigfs/graphcastgfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/graphcastgfs.t{init?fmt=%H}z.pgrb2.0p25.f{lead?fmt=%3H}"
 
 ## OUTPUT DATA SETTINGS
 #OUTPUTROOT: base output directory
@@ -74,7 +74,7 @@ if [ $RUN_GRID2GRID_STATS = YES ]; then
     export g2gs_means_fhr_min=24
     export g2gs_means_fhr_max=384
     export g2gs_means_fhr_inc=24
-    export g2gs_precip_accum24hr_file_format_list="$COMIN/prep/$COMPONENT/${RUN}.{init?fmt=%Y%m%d}/${MODELNAME}/${MODELNAME}.t{init?fmt=%H}z.f{lead?fmt=%3H}"
+    export g2gs_precip_accum24hr_file_format_list="$COMINaigfs/graphcastgfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/graphcastgfs.t{init?fmt=%H}z.pgrb2.0p25.f{lead?fmt=%3H}"
     export g2gs_precip_accum24hr_file_accum_list="6"
     export g2gs_precip_accum24hr_var_list="APCP"
     export g2gs_precip_accum24hr_init_hr_list="12"

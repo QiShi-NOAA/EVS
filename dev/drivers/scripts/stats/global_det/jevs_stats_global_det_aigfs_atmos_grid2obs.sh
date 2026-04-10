@@ -12,10 +12,10 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_dev_qi/EVS-aigfs-retro
 
 export SENDCOM=YES
-export SENDMAIL=YES
+export SENDMAIL=NO
 export KEEPDATA=NO
 export job=${PBS_JOBNAME:-jevs_stats_global_det_aigfs_atmos_grid2obs}
 export jobid=$job.${PBS_JOBID:-$$}
@@ -45,8 +45,10 @@ export MODELNAME=aigfs
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
-export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d/$STEP/$COMPONENT
+#export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
+export COMIN=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/evs/v2.0
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_dev_qi/evs-aigfs-retro/$evs_ver_2d/$STEP/$COMPONENT
+export VDATE=20260408
 
 export config=$HOMEevs/parm/evs_config/global_det/config.evs.prod.${STEP}.${COMPONENT}.${RUN}.${VERIF_CASE}.${MODELNAME}
 
