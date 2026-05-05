@@ -1,4 +1,4 @@
-#PBS -N jevs_plots_global_det_atmos_ai_grid2obs_pres_levs_last90days_00
+#PBS -N jevs_plots_global_det_atmos_ai_grid2obs_pres_levs_last31days_00
 #PBS -j oe
 #PBS -S /bin/bash
 #PBS -q dev
@@ -17,7 +17,7 @@ export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_aigfs_expr/EVS
 export SENDCOM=YES
 export KEEPDATA=NO
 export SENDDBN=NO
-export job=${PBS_JOBNAME:-jevs_plots_global_det_atmos_ai_grid2obs_pres_levs_last90days}
+export job=${PBS_JOBNAME:-jevs_plots_global_det_atmos_ai_grid2obs_pres_levs_last31days}
 export jobid=$job.${PBS_JOBID:-$$}
 export SITE=$(cat /etc/cluster_name)
 export vhr=00
@@ -40,7 +40,7 @@ export COMPONENT=global_det
 export RUN=atmos
 export VERIF_CASE=ai_grid2obs
 export VERIF_TYPE=pres_levs
-export NDAYS=90
+export NDAYS=31
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT

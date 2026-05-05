@@ -63,6 +63,7 @@ export SENDMAIL=${SENDMAIL:-NO}
 ####################################
 export COMIN=${COMIN:-$(compath.py ${envir}/com/$NET/$evs_ver)}
 export COMINgfs=${COMINgfs:-$(compath.py $envir/gfs/$gfs_ver)}
+export COMINeagle=/lfs/h2/emc/vpppg/noscrub/emc.vpppg/verification/global/archive/model_data/eagle_solo
 export COMINccpa=${COMINccpa:-$(compath.py $envir/ccpa/$ccpa_ver)}
 export COMINobsproc=${COMINobsproc:-$(compath.py $envir/obsproc/$obsproc_ver)}
 export DCOMINnohrsc=${DCOMINnohrsc:-$DCOMROOT}

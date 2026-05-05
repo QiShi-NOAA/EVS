@@ -3,7 +3,7 @@
 #PBS -S /bin/bash
 #PBS -q dev
 #PBS -A VERF-DEV
-#PBS -l walltime=00:25:00
+#PBS -l walltime=01:25:00
 #PBS -l place=vscatter:exclhost,select=1:ncpus=128:ompthreads=1:mem=150GB
 #PBS -l debug=true
 
@@ -12,7 +12,7 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_aigfs_expr/EVS
 
 export SENDCOM=YES
 export KEEPDATA=NO
@@ -44,10 +44,10 @@ export NDAYS=90
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
-export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
+export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_aigfs_expr/$NET/$evs_ver_2d
 today=$(cut -c7-14 ${COMROOT}/date/t${vhr}z)
 export VDATE_END=${VDATE_END:-$(finddate.sh $today d-1)}
-export COMOUT=/lfs/h2/emc/ptmp/${USER}/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN.$VDATE_END
+export COMOUT=/lfs/h2/emc/ptmp/${USER}/EVS_aigfs_expr/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN.$VDATE_END
 
 # Set config file
 export config=$HOMEevs/parm/evs_config/global_det/config.evs.prod.${STEP}.${COMPONENT}.${RUN}.${VERIF_CASE}.${VERIF_TYPE}

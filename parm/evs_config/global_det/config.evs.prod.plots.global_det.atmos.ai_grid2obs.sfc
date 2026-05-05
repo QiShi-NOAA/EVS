@@ -29,9 +29,14 @@ export RUN_GRID2OBS_PLOTS="YES"
 #model_list:                 model names
 #model_evs_data_dir_list:    base path to "evs_data" directory
 #model_file_format_list:     file format of model files
-export model_list="gfs aigfs"
-export model_evs_data_dir_list="$COMIN/stats/$COMPONENT/gfs $COMIN/stats/$COMPONENT/aigfs"
-export model_file_format_list="$COMROOT/gfs/${gfs_ver}/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/atmos/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H} ${COMIN}/prep/global_det/atmos.{init?fmt=%Y%m%d}/aigfs/aigfs.t{init?fmt=%H}z.f{lead?fmt=%3H}"
+EVS_BASE="/lfs/h2/emc/vpppg/noscrub/emc.vpppg"
+ARCHIVE_BASE="$EVS_BASE/verification/global/archive/model_data/eagle_solo"
+COMINevs="/lfs/h1/ops/prod/com/evs/v2.0"
+COMINevs_dev="$EVS_BASE/evs/v2.0"
+
+export model_list="gfs aigfs eagle_solo eagle_solo_test"
+export model_evs_data_dir_list="$COMINevs/stats/$COMPONENT/gfs $COMINevs_dev/stats/$COMPONENT/aigfs $COMIN/stats/$COMPONENT/eagle_solo $COMIN/stats/$COMPONENT/eagle_solo_test"
+export model_file_format_list="$COMROOT/gfs/${gfs_ver}/gfs.{init?fmt=%Y%m%d}/{init?fmt=%2H}/atmos/gfs.t{init?fmt=%2H}z.pgrb2.0p25.f{lead?fmt=%3H} $COMINevs_dev/prep/global_det/atmos.{init?fmt=%Y%m%d}/aigfs/aigfs.t{init?fmt=%H}z.f{lead?fmt=%3H} $ARCHIVE_BASE/eagle_solo/eagle_solo.{init?fmt=%Y%m%d}/{init?fmt=%2H}/aigfs.t{init?fmt=%2H}z.f{lead?fmt=%3H}.pgrb2 $ARCHIVE_BASE/eagle_solo_test/eagle_solo_test.{init?fmt=%Y%m%d}/{init?fmt=%2H}/aigfs.t{init?fmt=%2H}z.f{lead?fmt=%3H}.pgrb2"
 ## OUTPUT DATA SETTINGS
 #OUTPUTROOT: base output directory
 export OUTPUTROOT="$DATAROOT"
@@ -56,11 +61,11 @@ if [ $RUN_GRID2OBS_PLOTS = YES ]; then
     #    g2op_*_fhr_min: forecast hour to start verification: HH[H]
     #    g2op_*_fhr_max: forecast hour to end verification: HH[H]
     #    g2op_*_fhr_inc: frequency to verify forecast hours: at HH[H]
-    export g2op_model_plot_name_list="gfs aigfs"
+    export g2op_model_plot_name_list="gfs aigfs eagle_solo eagle_solo_test"
     export g2op_type_list="sfc"
     export g2op_event_equalization="NO"
     export g2op_sfc_init_hr_list="00 06 12 18"
-    export g2op_sfc_valid_hr_list="00 03 06 09 12 15 18 21"
-    export g2op_sfc_fhr_list="24 72 120 168 240 312 384"
+    export g2op_sfc_valid_hr_list="00 06 12 18"
+    export g2op_sfc_fhr_list="6 12 18 24 30 36 42 48 54 60 66 72 96 120 144 168 192 216 240 264 288 312 336 360 384"
 fi
 echo "END: $(basename ${BASH_SOURCE[0]})"
