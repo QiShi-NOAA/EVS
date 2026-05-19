@@ -65,7 +65,7 @@ valid_VERIF_CASE_STEP_type_opts_dict = {
                             'sea_ice', 'snow', 'sst'],
     'RUN_GRID2OBS_STATS': ['pres_levs', 'ptype', 'sfc'],
     'RUN_GRID2OBS_PLOTS': ['pres_levs', 'ptype', 'sfc'],
-    'RUN_AI_GRID2GRID_PLOTS': ['precip', 'pres_levs'],
+    'RUN_AI_GRID2GRID_PLOTS': ['means','precip', 'pres_levs'],
     'RUN_AI_GRID2OBS_PLOTS': ['pres_levs', 'sfc']
 }
 for VERIF_CASE_STEP_type in VERIF_CASE_STEP_type_list:
@@ -172,6 +172,7 @@ verif_case_step_settings_dict = {
         'sfc': ['init_hr_list', 'valid_hr_list']
     },
     'RUN_AI_GRID2GRID_PLOTS': {
+        'means': ['init_hr_list', 'valid_hr_list'],
         'precip': ['init_hr_list'],
         'pres_levs': ['truth_name_list', 'init_hr_list', 'valid_hr_list'],
     },
@@ -264,6 +265,7 @@ verif_case_step_check_len_dict = {
         'sfc': []
     },
     'RUN_AI_GRID2GRID_PLOTS': {
+        'means': [],
         'precip': [],
         'pres_levs': ['truth_name_list']
     },

@@ -12,10 +12,10 @@ set -x
 cd $PBS_O_WORKDIR
 
 export model=evs
-export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS
+export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_aigfs_expr/EVS
 
 export SENDCOM=YES
-export SENDMAIL=YES
+export SENDMAIL=NO
 export KEEPDATA=NO
 export job=${PBS_JOBNAME:-jevs_prep_global_det_atmos}
 export jobid=$job.${PBS_JOBID:-$$}
@@ -40,10 +40,10 @@ export RUN=atmos
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
-export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
+export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_aigfs_expr/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
 
-export MODELNAME="cfs cmc cmc_regional dwd fnmoc gfs aigfs jma metfra ukmet ecmwf"
-export OBSNAME="osi_saf ghrsst_ospo ccpa_accum24hr prepbufr_gdas prepbufr_nam"
+export MODELNAME="aigfs"
+export OBSNAME="ccpa_accum24hr prepbufr_gdas prepbufr_nam"
 
 # CALL executable job script here
 $HOMEevs/jobs/JEVS_PREP_GLOBAL_DET

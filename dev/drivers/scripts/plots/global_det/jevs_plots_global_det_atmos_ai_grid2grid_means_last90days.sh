@@ -3,7 +3,7 @@
 #PBS -S /bin/bash
 #PBS -q dev
 #PBS -A VERF-DEV
-#PBS -l walltime=00:15:00
+#PBS -l walltime=00:25:00
 #PBS -l place=vscatter:exclhost,select=1:ncpus=128:ompthreads=1:mem=150GB
 #PBS -l debug=true
 
@@ -47,7 +47,6 @@ export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_aigfs_expr/$NET/$evs_ver_2d
 today=$(cut -c7-14 ${COMROOT}/date/t${vhr}z)
 export VDATE_END=${VDATE_END:-$(finddate.sh $today d-1)}
-export VDATE_END=20260501
 export COMOUT=/lfs/h2/emc/ptmp/${USER}/EVS_aigfs_expr/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN.$VDATE_END
 
 # Set config file

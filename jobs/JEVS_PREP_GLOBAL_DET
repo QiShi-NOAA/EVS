@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 ########################################
 # Preliminary data setup step
 ########################################
@@ -62,7 +63,9 @@ export COMINcfs=${COMINcfs:-$(compath.py $envir/cfs/$cfs_ver/cfs.$INITDATE)}
 export COMINcmc=${COMINcmc:-$(compath.py $envir/cmc/$cmc_ver/cmc.$INITDATE)}
 export COMINukmet=${COMINukmet:-$(compath.py $envir/ukmet/$ukmet_ver/ukmet.$INITDATE)}
 export COMINgfs=${COMINgfs:-$(compath.py $envir/gfs/$gfs_ver/gfs.$INITDATE)}
-export COMINaigfs=${COMINaigfs:-$(compath.py $envir/aigfs/$aigfs_ver/aigfs.$INITDATE)}
+#export COMINaigfs=${COMINaigfs:-$(compath.py $envir/aigfs/$aigfs_ver/aigfs.$INITDATE)}
+export COMINaigfs=/lfs/h2/emc/ptmp/linlin.cui/com/aigfs/v1.2/aigfs.$INITDATE
+#export COMINaigfs=/lfs/h2/emc/nems/noscrub/linlin.cui/Tests/gfsv17/v1.2/aigfs.$INITDATE
 export COMINccpa=${COMINccpa:-$(compath.py $envir/ccpa/$ccpa_ver)}
 export COMINobsproc=${COMINobsproc:-$(compath.py $envir/obsproc/$obsproc_ver)}
 export DCOMINcmc_precip=${DCOMINcmc_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
