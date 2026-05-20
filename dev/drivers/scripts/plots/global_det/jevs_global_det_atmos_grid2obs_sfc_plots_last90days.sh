@@ -3,7 +3,7 @@
 #PBS -S /bin/bash
 #PBS -q dev
 #PBS -A VERF-DEV
-#PBS -l walltime=01:15:00
+#PBS -l walltime=02:15:00
 #PBS -l place=vscatter:exclhost,select=5:ncpus=128:ompthreads=1:mem=325GB
 #PBS -l debug=true
 
@@ -40,7 +40,7 @@ export COMPONENT=global_det
 export RUN=atmos
 export VERIF_CASE=grid2obs
 export VERIF_TYPE=sfc
-export NDAYS=90
+export NDAYS=92
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT

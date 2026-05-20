@@ -40,7 +40,7 @@ export COMPONENT=global_det
 export RUN=atmos
 export VERIF_CASE=grid2grid
 export VERIF_TYPE=means
-export NDAYS=90
+export NDAYS=92
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
