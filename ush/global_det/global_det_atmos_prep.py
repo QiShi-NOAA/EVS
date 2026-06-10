@@ -33,6 +33,7 @@ DCOMINcmc_regional_precip = os.environ['DCOMINcmc_regional_precip']
 DCOMINdwd_precip = os.environ['DCOMINdwd_precip']
 DCOMINecmwf = os.environ['DCOMINecmwf']
 DCOMINecmwf_precip = os.environ['DCOMINecmwf_precip']
+DCOMINaifs = os.environ['DCOMINaifs']
 DCOMINfnmoc = os.environ['DCOMINfnmoc']
 DCOMINimd = os.environ['DCOMINimd']
 DCOMINjma = os.environ['DCOMINjma']
@@ -339,6 +340,12 @@ global_det_model_dict = {
                                                        +'{valid?fmt=%m%d%H%M}'+f'{ECMWF_FILE_EXT}'),
               'inithours': ['00', '12'],
               'fcst_hrs': range(0, 240+6, 6)},
+    'aifs': {'input_fcst_file_format': os.path.join(DCOMINaifs, '{init?fmt=%2H}',
+                                                    '{init?fmt=%Y%m%d%H%M%S}-{lead?fmt=%H}h-oper-fc.grib2'),
+            'input_anl_file_format': os.path.join(DCOMINaifs, '{init?fmt=%2H}',
+                                                  '{init?fmt=%Y%m%d%H%M%S}-0h-oper-fc.grib2'),
+            'inithours': ['00', '12'],               
+            'fcst_hrs': range(0, 360+6, 6)},
     'fnmoc': {'input_fcst_file_format': os.path.join(DCOMINfnmoc,
                                                      'US058GMET-OPSbd2.NAVGEM'
                                                      +'{lead?fmt=%3H}-'
@@ -515,6 +522,13 @@ for MODEL in MODELNAME:
                                                     str(fcst_hr),
                                                     'full',
                                                     log_missing_file)
+                    elif MODEL == 'aifs':
+                        gda_util.prep_prod_aifs_file(input_fcst_file,
+                                                     tmp_fcst_file,
+                                                     CDATE_dt,
+                                                     str(fcst_hr),
+                                                     'full',
+                                                     log_missing_file)
                     else:
                         gda_util.copy_file(input_fcst_file, tmp_fcst_file)
                         if not os.path.exists(input_fcst_file):
@@ -791,6 +805,13 @@ for MODEL in MODELNAME:
                                                 'anl',
                                                 'full',
                                                 log_missing_file)
+                elif MODEL == 'aifs':
+                    gda_util.prep_prod_aifs_file(input_anl_file,
+                                                 tmp_anl_file,
+                                                 CDATE_dt,
+                                                 'anl',
+                                                 'full',
+                                                 log_missing_file)    
                 else:
                     gda_util.copy_file(input_anl_file, tmp_anl_file)
                     if not os.path.exists(input_anl_file):

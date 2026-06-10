@@ -1,10 +1,10 @@
-#PBS -N jevs_stats_global_det_aigfs_atmos_grid2grid_00
+#PBS -N jevs_stats_global_det_aifs_atmos_grid2obs_00
 #PBS -j oe
 #PBS -S /bin/bash
 #PBS -q dev
 #PBS -A VERF-DEV
-#PBS -l walltime=01:10:00
-#PBS -l place=vscatter:exclhost,select=1:ncpus=128:ompthreads=1:mem=225GB
+#PBS -l walltime=01:45:00
+#PBS -l place=vscatter:exclhost,select=1:ncpus=128:ompthreads=1:mem=300GB
 #PBS -l debug=true
 
 set -x
@@ -16,8 +16,8 @@ export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_dev_qi/EVS
 
 export SENDCOM=YES
 export SENDMAIL=NO
-export KEEPDATA=NO
-export job=${PBS_JOBNAME:-jevs_stats_global_det_aigfs_atmos_grid2grid}
+export KEEPDATA=YES
+export job=${PBS_JOBNAME:-jevs_stats_global_det_aifs_atmos_grid2obs}
 export jobid=$job.${PBS_JOBID:-$$}
 export SITE=$(cat /etc/cluster_name)
 export vhr=00
@@ -40,13 +40,14 @@ export NET=evs
 export STEP=stats
 export COMPONENT=global_det
 export RUN=atmos
-export VERIF_CASE=grid2grid
-export MODELNAME=aigfs
+export VERIF_CASE=grid2obs
+export MODELNAME=aifs
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_dev_qi/$NET/$evs_ver_2d
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_dev_qi/$NET/$evs_ver_2d/$STEP/$COMPONENT
+export VDATE=20260609
 
 export config=$HOMEevs/parm/evs_config/global_det/config.evs.prod.${STEP}.${COMPONENT}.${RUN}.${VERIF_CASE}.${MODELNAME}
 
@@ -55,5 +56,5 @@ $HOMEevs/jobs/JEVS_STATS_GLOBAL_DET
 
 ######################################################################
 # Purpose: This does the statistics work for the global deterministic
-#          atmospheric grid-to-grid component for AIGFS
+#          atmospheric grid-to-observations component for AIGFS
 ######################################################################

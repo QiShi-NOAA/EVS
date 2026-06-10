@@ -1,4 +1,4 @@
-#PBS -N jevs_stats_global_det_aigfs_atmos_grid2grid_00
+#PBS -N jevs_stats_global_det_aifs_atmos_grid2grid_00
 #PBS -j oe
 #PBS -S /bin/bash
 #PBS -q dev
@@ -17,7 +17,7 @@ export HOMEevs=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_dev_qi/EVS
 export SENDCOM=YES
 export SENDMAIL=NO
 export KEEPDATA=NO
-export job=${PBS_JOBNAME:-jevs_stats_global_det_aigfs_atmos_grid2grid}
+export job=${PBS_JOBNAME:-jevs_stats_global_det_aifs_atmos_grid2grid}
 export jobid=$job.${PBS_JOBID:-$$}
 export SITE=$(cat /etc/cluster_name)
 export vhr=00
@@ -41,12 +41,13 @@ export STEP=stats
 export COMPONENT=global_det
 export RUN=atmos
 export VERIF_CASE=grid2grid
-export MODELNAME=aigfs
+export MODELNAME=aifs
 
 export DATAROOT=/lfs/h2/emc/stmp/$USER/evs_test/$envir/tmp
 export TMPDIR=$DATAROOT
 export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_dev_qi/$NET/$evs_ver_2d
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_dev_qi/$NET/$evs_ver_2d/$STEP/$COMPONENT
+export VDATE=20260609
 
 export config=$HOMEevs/parm/evs_config/global_det/config.evs.prod.${STEP}.${COMPONENT}.${RUN}.${VERIF_CASE}.${MODELNAME}
 

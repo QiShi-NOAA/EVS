@@ -70,6 +70,7 @@ export DCOMINcmc_regional_precip=${DCOMINcmc_regional_precip:-$DCOMROOT/${INITDA
 export DCOMINdwd_precip=${DCOMINdwd_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
 export DCOMINecmwf=${DCOMINecmwf:-$DCOMROOT/${INITDATE}/wgrbbul/ecmwf}
 export DCOMINecmwf_precip=${DCOMINecmwf_precip:-$DCOMROOT/${INITDATE}/qpf_verif}
+export DCOMINaifs=${DCOMINaifs:-$DCOMROOT/${INITDATE}/wgrbbul/ecmwf_aifs}
 export DCOMINfnmoc=${DCOMINfnmoc:-$DCOMROOT/navgem}
 export DCOMINimd=${DCOMINimd:-$DCOMROOT/${INITDATE}/wgrbbul/ncmrwf_gdas}
 export DCOMINjma=${DCOMINjma:-$DCOMROOT/${INITDATE}/wgrbbul}
