@@ -948,14 +948,12 @@ if JOB_GROUP in ['reformat_data', 'assemble_data', 'generate_stats']:
                                 mod_rm_level_list = [
                                     'P20', 'P10', 'P5', 'P1'
                                 ]
-                            print('dtype', dtype)
                             for dtype in ['fcst', 'obs']:
                                 dtype_level_list = (
                                     job_env_dict[f"var1_{dtype}_levels"]\
                                     .split(', ')
                                 )
                                 mod_dtype_level_list = []
-                                print('dtype_level_list', dtype_level_list)
                                 for level_chk in dtype_level_list:
                                     if level_chk not in mod_rm_level_list:
                                         mod_dtype_level_list.append(level_chk)
