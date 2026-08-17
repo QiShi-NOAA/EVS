@@ -918,11 +918,6 @@ if JOB_GROUP in ['reformat_data', 'assemble_data', 'generate_stats']:
                                 'Visibility', 'WindGust','PBLHeight']\
                                 and job_env_dict['MODEL'] in ['aigfs', 'aifs']:
                             write_job_cmds = False
-                        #AIFS does not have SeaLevelPres    
-                        if job_env_dict['VERIF_TYPE'] == 'sfc' \
-                                and verif_type_job == 'SeaLevelPres' \
-                                and job_env_dict['MODEL'] == 'aifs':
-                            write_job_cmds = False                            
                         # CMC, FNMOC, AIGFS and AIFS do not have variables at all levels
                         if job_env_dict['VERIF_TYPE'] == 'pres_levs' \
                                 and job_env_dict['MODEL'] in ['cmc', 'fnmoc', 'aigfs','aifs']:

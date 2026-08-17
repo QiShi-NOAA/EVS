@@ -1025,7 +1025,7 @@ if JOB_GROUP in ['reformat_data', 'assemble_data', 'generate_stats']:
                     elif JOB_GROUP == 'generate_stats':
                         #remove variable that AIGFS does not have
                         if verif_type == 'means'\
-                                and job_env_dict['MODEL'] == 'aigfs'\
+                                and job_env_dict['MODEL'] in ['aigfs', 'aifs']\
                                 and verif_type_job \
                                 in ['CAPESfcBased',\
                                     'CloudWater','GeoHeightTropopause','PBLHeight',\
@@ -1039,11 +1039,6 @@ if JOB_GROUP in ['reformat_data', 'assemble_data', 'generate_stats']:
                                 in ['cmc', 'cmc_regional', 'dwd', 'ecmwf',
                                     'fnmoc', 'jma', 'metfra', 'ukmet', 'aigfs', 'aifs'] \
                                 and verif_type_job == 'Ozone':
-                            write_job_cmds = False
-                        #remove AIFS does not have :PRMSL     
-                        if verif_type == 'pres_levs' \
-                                and job_env_dict['MODEL'] == 'aifs' \
-                                and verif_type_job == 'PresSeaLevel':    
                             write_job_cmds = False
                         # IMD does not have Ozone Mixing Ratio at 925mb
                         if verif_type == 'pres_levs' \

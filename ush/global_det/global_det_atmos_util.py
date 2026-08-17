@@ -854,8 +854,18 @@ def prep_prod_aifs_file(source_file, dest_file, init_dt, forecast_hour,
         if not check_grib2_file_corrupt(source_file):
             copy_file(source_file, prepped_file)
             subprocess.run(
-                ["wgrib2", prepped_file, "-set_grib_type",
-                 "complex2","-grib_out",filtered_file,],
+                [
+                 "wgrib2",
+                  prepped_file,
+                  "-if", ":PRES:mean sea level:",
+                  "-set_var", "PRMSL",
+                  "-fi",
+                  "-if", ":TPRATE:",
+                  "-set_var", "APCP",
+                  "-fi",
+                  "-set_grib_type", "complex2",
+                  "-grib_out", filtered_file,
+                 ],      
                   check=True,
                   capture_output=True,
                   text=True,

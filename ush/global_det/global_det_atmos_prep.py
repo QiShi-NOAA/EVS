@@ -344,7 +344,7 @@ global_det_model_dict = {
                                                     '{init?fmt=%Y%m%d%H%M%S}-{lead?fmt=%H}h-oper-fc.grib2'),
             'input_anl_file_format': os.path.join(DCOMINaifs, '{init?fmt=%2H}',
                                                   '{init?fmt=%Y%m%d%H%M%S}-0h-oper-fc.grib2'),
-            'inithours': ['00', '12'],               
+            'inithours': ['00', '06', '12', '18'],
             'fcst_hrs': range(0, 360+6, 6)},
     'fnmoc': {'input_fcst_file_format': os.path.join(DCOMINfnmoc,
                                                      'US058GMET-OPSbd2.NAVGEM'
