@@ -844,6 +844,7 @@ def prep_prod_aifs_file(source_file, dest_file, init_dt, forecast_hour,
          Returns:
     """
     # Environment variables and executables
+    WGRIB2 = os.environ['WGRIB2']
     # Working file names
     prepped_file = os.path.join(os.getcwd(),
                                 'atmos.'+dest_file.rpartition('/')[2])
@@ -853,23 +854,18 @@ def prep_prod_aifs_file(source_file, dest_file, init_dt, forecast_hour,
     if check_file_exists_size(source_file):
         if not check_grib2_file_corrupt(source_file):
             copy_file(source_file, prepped_file)
-            subprocess.run(
-                [
-                 "wgrib2",
-                  prepped_file,
-                  "-if", ":PRES:mean sea level:",
-                  "-set_var", "PRMSL",
-                  "-fi",
-                  "-if", ":TPRATE:",
-                  "-set_var", "APCP",
-                  "-fi",
-                  "-set_grib_type", "complex2",
-                  "-grib_out", filtered_file,
-                 ],      
-                  check=True,
-                  capture_output=True,
-                  text=True,
-            )
+            run_shell_command(
+                [WGRIB2+' '+prepped_file
+                  +' -if ":PRES:mean sea level:"'
+                  +' -set_var PRMSL'
+                  +' -fi'
+                  +' -if ":TPRATE:"'
+                  +' -set_var APCP'
+                  +' -fi'
+                  +' -set_grib_type complex2'
+                  +' -grib_out '
+                  +filtered_file]
+                ) 
     else:
         log_missing_file_model(log_missing_file, source_file, 'aifs',
                                init_dt, str(forecast_hour).zfill(3))
