@@ -43,7 +43,7 @@ export COMIN=/lfs/h2/emc/vpppg/noscrub/$USER/$NET/$evs_ver_2d
 export COMOUT=/lfs/h2/emc/vpppg/noscrub/$USER/EVS_aigfs_expr/$NET/$evs_ver_2d/$STEP/$COMPONENT/$RUN
 
 export MODELNAME="aigfs"
-export OBSNAME="ccpa_accum24hr prepbufr_gdas prepbufr_nam"
+export OBSNAME="ccpa_accum24hr prepbufr_gdas prepbufr_rrfs"
 
 # CALL executable job script here
 $HOMEevs/jobs/JEVS_PREP_GLOBAL_DET
