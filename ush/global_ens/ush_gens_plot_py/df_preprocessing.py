@@ -297,6 +297,8 @@ def get_preprocessed_data(logger, stats_dir, prune_dir, output_base_template,
         met_version, clear_prune_dir
     )
     df = filter_by_level_type(df, logger, verif_type)
+    if str(line_type).upper() == "PCT":
+        df['FCST_VAR']=df['OBS_VAR']
     df = filter_by_var_name(df, logger, fcst_var_names, obs_var_names)
     df = filter_by_interp(df, logger, interp)
     df = filter_by_domain(df, logger, domain)

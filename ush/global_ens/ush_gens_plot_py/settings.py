@@ -2928,7 +2928,47 @@ class Reference():
                                     'obs_var_options': '',
                                     'plot_group':'sfc_upper'}
                     }
-                }
+                },
+                #add PCT for reliability diagram
+                'PCT': {
+                    'plot_stats_list': ('reli'),
+                    'interp': 'NEAREST, BILIN',
+                    'vx_mask_list' : [
+                        'CONUS', 'G130', 'G214', 'G221', 'WEST', 'EAST', 'MDW', 'NPL', 'SPL', 'NEC',
+                        'SEC', 'NWC', 'SWC', 'NMT', 'SMT', 'SWD', 'GRB',
+                        'LMV', 'GAC', 'APL', 'NAK', 'SAK',
+                        'G003', 'NHEM', 'SHEM', 'TROPICS', 'CONUS_East', 'CONUS_West', 'CONUS_Central', 'CONUS_South', 'Alaska',
+                        'Appalachia', 'CPlains', 'DeepSouth', 'GreatBasin', 'GreatLakes', 'Mezquital', 'MidAtlantic', 'NorthAtlantic',
+                        'NPlains', 'NRockies', 'PacificNW', 'PacificSW', 'Prairie', 'Southeast', 'Southwest', 'SPlains', 'SRockies'
+                    ],
+                    'var_dict': {
+                        'CAPEsfc': {'fcst_var_names': ['CAPE'],
+                                    'fcst_var_levels': ['L0'],
+                                    'fcst_var_thresholds': ('>=250, >500, >=500, >1000, >=1000,'
+                                                            + ' >1500, >2000, >=2000,'
+                                                            + ' >3000,'
+                                                            + ' >4000'),
+                                    'fcst_var_options': '',
+                                    'obs_var_names': ['CAPE'],
+                                    'obs_var_levels': ['L100000-0','L0'],
+                                    'obs_var_thresholds': ('>=250, >500, >=500, >1000, >=1000,'
+                                                           + ' >1500, >2000, >=2000,'
+                                                           + ' >3000,'
+                                                           + ' >4000'),
+                                    'obs_var_options': '',
+                                    'plot_group':'sfc_upper'},
+                        'MLCAPE': {'fcst_var_names': ['CAPE'],
+                                    'fcst_var_levels': ['P90-0','ML'],
+                                    'fcst_var_thresholds': '>=250, >=500, >=1000, >=2000',
+                                    'fcst_var_options': '',
+                                    'obs_var_names': ['MLCAPE'],
+                                    'obs_var_levels': ['L90000-0','L100000-0','ML'],
+                                    'obs_var_thresholds': '>=250, >=500, >=1000, >=2000',
+                                    'obs_var_options': '',
+                                    'plot_group':'sfc_upper'}                        
+                        }
+                    }
+
             },
             'grid2obs_aq': {
                 'CTC': {

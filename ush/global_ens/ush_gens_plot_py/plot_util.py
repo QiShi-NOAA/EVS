@@ -397,6 +397,16 @@ def get_stat_file_line_type_columns(logger, met_version, line_type):
           stat_file_line_type_columns = [
             'TOTAL', 'FY_OY', 'FY_ON', 'FN_OY', 'FN_ON'
          ]
+   elif line_type == 'PCT':
+       stat_file_line_type_columns = [
+            'TOTAL', 'N_THRESH', 'THRESH_1', 'OY_1', 'ON_1',
+            'THRESH_2', 'OY_2', 'ON_2','THRESH_3', 'OY_3', 'ON_3',
+            'THRESH_4', 'OY_4', 'ON_4','THRESH_5', 'OY_5', 'ON_5',
+            'THRESH_6', 'OY_6', 'ON_6','THRESH_7', 'OY_7', 'ON_7',
+            'THRESH_8', 'OY_8', 'ON_8','THRESH_9', 'OY_9', 'ON_9',
+            'THRESH_10', 'OY_10', 'ON_10',
+            'THRESH_11'
+         ]   
    elif line_type == 'NBRCNT':
       if met_version >= 6.0:
          stat_file_line_type_columns = [
@@ -717,6 +727,8 @@ def get_stat_plot_name(logger, stat):
       stat_plot_name = 'Success Ratio (1-FAR)'
    elif stat == 'csi':
       stat_plot_name = 'Critical Success Index'
+   elif stat == 'reli':
+      stat_plot_name ='Observed Relative Frequency'
    elif stat == 'ts':
       stat_plot_name = 'Threat Score'
    elif stat == 'gss':
@@ -1636,6 +1648,7 @@ def calculate_stat(logger, model_data, stat, conversion):
                                name being plotted
    """
    model_data_columns = model_data.columns.values.tolist()
+   print("model_data_clolumns", model_data_columns)
    if model_data_columns == [ 'TOTAL' ]:
       logger.warning("Empty model_data dataframe")
       line_type = 'NULL'
@@ -1795,6 +1808,22 @@ def calculate_stat(logger, model_data, stat, conversion):
          fy_on = model_data.loc[:]['FY_ON']
          fn_oy = model_data.loc[:]['FN_OY']
          fn_on = model_data.loc[:]['FN_ON']
+      elif all(elem in model_data_columns for elem in
+            ['N_THRESH','THRESH_1','OY_1','ON_1']):   
+         line_type = 'PCT'
+         total = model_data.loc[:]['TOTAL']
+         thresh = {}
+         oy = {}
+         on = {}
+         n_thresh = int(model_data.loc[:]['N_THRESH'][0])
+         print('n_thresh',n_thresh)
+         for i in range(1, n_thresh):
+            thresh[i] = model_data[f'THRESH_{i}']
+            oy[i] = model_data[f'OY_{i}']
+            on[i] = model_data[f'ON_{i}']
+         thresh[n_thresh] = model_data[f'THRESH_{i+1}']
+         print(type(oy), oy)
+         print(type(on), on)
       elif all(elem in model_data_columns for elem in
             ['FBS','FSS','AFSS','UFSS','F_RATE','O_RATE']):
          line_type = 'NBRCNT'
@@ -2054,6 +2083,13 @@ def calculate_stat(logger, model_data, stat, conversion):
    elif stat == 'csi' or stat == 'ts':
       if line_type == 'CTC':
          stat_values = fy_oy/(fy_oy + fy_on + fn_oy)
+   elif stat == 'reli':
+      if line_type == 'PCT':
+         stat_values = {}
+         for i in range(1, n_thresh):
+             stat_values[i] = oy[i]/(oy[i] + on[i])
+         stat_values = pd.Series(stat_values)    
+         print('stat_values',stat_values)    
    elif stat == 'gss' or stat == 'ets':
       if line_type == 'CTC':
          n = fy_oy + fy_on + fn_oy + fn_on

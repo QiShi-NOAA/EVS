@@ -1862,7 +1862,33 @@ class Reference():
                                     'obs_var_options': '',
                                     'plot_group':'cape'},
                     }
-                }
+                },
+                'PCT': {
+                    'plot_stats_list': ('reli'),
+                    'interp': 'NEAREST, BILIN',
+                    'vx_mask_list' : [
+                        'CONUS', 'G130', 'G214', 'G221', 'WEST', 'EAST', 'MDW', 'NPL', 'SPL', 'NEC',
+                        'SEC', 'NWC', 'SWC', 'NMT', 'SMT', 'SWD', 'GRB',
+                        'LMV', 'GAC', 'APL', 'NAK', 'SAK'
+                    ],
+                    'var_dict': {
+                        'CAPEsfc': {'fcst_var_names': ['CAPE'],
+                                    'fcst_var_levels': ['L0'],
+                                    'fcst_var_thresholds': ('>500, >1000,'
+                                                            + ' >1500, >2000,'
+                                                            + ' >3000,'
+                                                            + ' >4000'),
+                                    'fcst_var_options': '',
+                                    'obs_var_names': ['CAPE'],
+                                    'obs_var_levels': ['L100000-0'],
+                                    'obs_var_thresholds': ('>500, >1000,'
+                                                           + ' >1500, >2000,'
+                                                           + ' >3000,'
+                                                           + ' >4000'),
+                                    'obs_var_options': '',
+                                    'plot_group':'cape'}                         
+                         }
+                    }
             },
             'grid2obs_aq': {
                 'CTC': {

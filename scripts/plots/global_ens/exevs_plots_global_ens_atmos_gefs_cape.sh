@@ -52,7 +52,7 @@ done
 
 for fcst_valid_hour in $fcst_valid_hours ; do
 
-  for stats in ets fbias sratio_pod_csi ; do 
+  for stats in ets fbias sratio_pod_csi reli; do 
     if [ $stats = ets ] ; then
       stat_list='ets'
       line_tp='ctc'
@@ -71,6 +71,12 @@ for fcst_valid_hour in $fcst_valid_hours ; do
       VARs='CAPEsfc'
       score_types='performance_diagram'
       VX_MASK_LIST="CONUS, CONUS_East, CONUS_West, CONUS_South, CONUS_Central"
+    elif [ $stats = reli ] ; then
+      stat_list='reli'
+      line_tp='PCT'
+      VARs='CAPEsfc'
+      score_types='reliability_diagram'
+      VX_MASK_LIST="CONUS, CONUS_East, CONUS_West, CONUS_South, CONUS_Central"      
     else
       err_exit "$stats is not a valid metric"
     fi   
