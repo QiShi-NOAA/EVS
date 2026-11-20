@@ -5,11 +5,10 @@
 #
 # Name:          reliability_diagram.py
 # Contact(s):    Qi Shi
-# Developed:     Nov. 22, 2021 by Marcel Caron 
-# Last Modified: Jun. 3, 2022 by Marcel Caron             
+# Developed:     Nov. 17, 2026 by Qi Shi 
 # Title:         Line plot of verification metric as a function of 
 #                forecast threshold
-# Abstract:      Plots METplus output (e.g., BCRMSE) as a line plot, 
+# Abstract:      Plots METplus PCT line type as a line plot, 
 #                varying by forecast threshold, which represents the x-axis. 
 #                Line colors and styles are unique for each model, and several
 #                models can be plotted at once.
@@ -225,29 +224,36 @@ def plot_reliability_diagram(df: pd.DataFrame, logger: logging.Logger,
         return None
 
     group_by = ['MODEL']
-    #if sample_equalization:
-    #    df, bool_success = plot_util.equalize_samples(logger, df, group_by)
-    #    if not bool_success:
-    #        sample_equalization = False
+    if sample_equalization:
+        df, bool_success = plot_util.equalize_samples(logger, df, group_by)
+        if not bool_success:
+            sample_equalization = False
     df_groups = df.groupby(group_by)
     # Aggregate unit statistics before calculating metrics
     df_aggregated = df_groups.sum()
-    total = df_aggregated.loc[:]['TOTAL']
-    oy = {}
-    on = {}
-    obs_freq ={}
-    sample_num={}
-    for i in range(1, 11):
-            oy[i] = df_aggregated.loc[:][f'OY_{i}']
-            on[i] = df_aggregated.loc[:][f'ON_{i}']
-            obs_freq[i] = oy[i]/(oy[i]+on[i])
-            sample_num[i] = oy[i]+on[i]
-    # Convert dict_values to a list
-    models = obs_freq[1].index.tolist()
+    df_avg = df_groups.mean()
+
+    # clauclate the observed frequencies
+    oy = df_aggregated[[f'OY_{i}' for i in range(1, 11)]]
+    on = df_aggregated[[f'ON_{i}' for i in range(1, 11)]]
+    #rename the oy and on colums to match each other
+    oy.columns = [f'THRESH_{i}' for i in range(1, 11)]
+    on.columns = [f'THRESH_{i}' for i in range(1, 11)]
+    sample_num = oy + on
+    obs_freq = oy / sample_num.replace(0, np.nan)
+    #Climatological relative frequency
+    total_samples = sample_num.sum().sum()
+    climo = oy.sum().sum() / total_samples if total_samples != 0 else np.nan
+
+    # No-skill line
+    pfcst = df_avg[[f'THRESH_{i}' for i in range(1, 11)]]
+    no_skill = (pfcst + climo + 0.05) / 2
+
+    # find the width for the sample number bar plot
+    models = df_aggregated.index.tolist()
     # Dynamically identify models
     n_models = len(models)
     width = 0.1 / n_models
-
 
     models_renamed = []
     count_renamed = 1
@@ -361,7 +367,6 @@ def plot_reliability_diagram(df: pd.DataFrame, logger: logging.Logger,
         axins.bar(x_vals + offset, counts, width=width,color=mod_setting_dicts[m]['color'])
     axins.set_xlabel('Forecast Frequency', fontsize=11,labelpad=2)
     axins.set_ylabel('Samples', fontsize=11, labelpad=2)
-
     axins.set_xlim(0, 1)
     axins.tick_params(axis='both', labelsize=9,direction='in',pad=1)
     axins.set_xticks(np.arange(0,1.1,0.1))
@@ -369,9 +374,24 @@ def plot_reliability_diagram(df: pd.DataFrame, logger: logging.Logger,
     axins.ticklabel_format(axis='y',style='sci',scilimits=(0, 0),useMathText=True)
     # Scientific notation exponent font size
     axins.yaxis.get_offset_text().set_fontsize(9)
-    #axins.yaxis.get_offset_text().set_position((0, 0.45))
 
-    ax.plot([0, 1], [0, 1],color='black',linestyle='-',linewidth=0.8, label='Perfect Reliability')
+    #Add the perfect reliability line
+    ax.plot([0, 1], [0, 1],color='black',linestyle='--',linewidth=0.8, label='_nolegend_')
+    ax.text(0.98, 0.98,'Pefect Reliability',color='k',fontsize=12,rotation=45,
+            rotation_mode='anchor',ha='right', va='top')
+    # Add climatology reference lines
+    ax.axhline(y=climo, color='red', linestyle='--',label='_nolegend_')
+    ax.text(1.0, climo,'No Resolusion',color='k',fontsize=12,ha='right', va='bottom')
+    #Add the no skill line
+    y_start = no_skill.loc[str(model_list[m]), 'THRESH_1']
+    y_end = no_skill.loc[str(model_list[m]), 'THRESH_10']
+    noskill_slope = (y_end - y_start) / (0.95 - 0.05)
+    x_noskill_vals = np.arange(0, 1.01, 0.1)
+    y_noskill_vals = y_start + noskill_slope * (x_noskill_vals - 0.05)
+    ax.plot(x_noskill_vals, y_noskill_vals,color='red',linestyle='-.',linewidth=0.8, label='_nolegend_')
+    angle = np.degrees(np.arctan(noskill_slope))
+    ax.text(1.0, y_noskill_vals[-1],'No Skill',color='k',fontsize=12,rotation=angle,
+            rotation_mode='anchor',ha='right', va='bottom')
 
 
     # Configure axis ticks
