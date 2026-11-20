@@ -1648,7 +1648,6 @@ def calculate_stat(logger, model_data, stat, conversion):
                                name being plotted
    """
    model_data_columns = model_data.columns.values.tolist()
-   print("model_data_clolumns", model_data_columns)
    if model_data_columns == [ 'TOTAL' ]:
       logger.warning("Empty model_data dataframe")
       line_type = 'NULL'
@@ -1816,14 +1815,11 @@ def calculate_stat(logger, model_data, stat, conversion):
          oy = {}
          on = {}
          n_thresh = int(model_data.loc[:]['N_THRESH'][0])
-         print('n_thresh',n_thresh)
          for i in range(1, n_thresh):
             thresh[i] = model_data[f'THRESH_{i}']
             oy[i] = model_data[f'OY_{i}']
             on[i] = model_data[f'ON_{i}']
          thresh[n_thresh] = model_data[f'THRESH_{i+1}']
-         print(type(oy), oy)
-         print(type(on), on)
       elif all(elem in model_data_columns for elem in
             ['FBS','FSS','AFSS','UFSS','F_RATE','O_RATE']):
          line_type = 'NBRCNT'
@@ -2089,7 +2085,6 @@ def calculate_stat(logger, model_data, stat, conversion):
          for i in range(1, n_thresh):
              stat_values[i] = oy[i]/(oy[i] + on[i])
          stat_values = pd.Series(stat_values)    
-         print('stat_values',stat_values)    
    elif stat == 'gss' or stat == 'ets':
       if line_type == 'CTC':
          n = fy_oy + fy_on + fn_oy + fn_on
