@@ -346,23 +346,15 @@ def plot_reliability_diagram(df: pd.DataFrame, logger: logging.Logger,
         else:
             model_plot_name = model_list[m]
         x_vals = np.arange(0.05,1.05,0.1)
-        y_vals = {
-            lead_time: obs_freq[lead_time][str(model_list[m])]
-            for lead_time in obs_freq
-             }
-        y_values = list(y_vals.values())
+        y_vals = obs_freq.loc[str(model_list[m]), 'THRESH_1':'THRESH_10']
         ax.plot(
-            x_vals, y_values, marker='.', c=mod_setting_dicts[m]['color'], 
+            x_vals, y_vals, marker='.', c=mod_setting_dicts[m]['color'], 
             mew=2., figure=fig, ms=8, 
             ls=mod_setting_dicts[m]['linestyle'], 
             lw=2,label=str(model_list[m])
         )
 
-        sample_num_1={      
-            lead_time: sample_num[lead_time][str(model_list[m])]
-            for lead_time in sample_num
-             }  
-        counts = list(sample_num_1.values())
+        counts = sample_num.loc[str(model_list[m]), 'THRESH_1':'THRESH_10']
         offset = (m - (n_models - 1) / 2) * width
         axins.bar(x_vals + offset, counts, width=width,color=mod_setting_dicts[m]['color'])
     axins.set_xlabel('Forecast Frequency', fontsize=11,labelpad=2)
